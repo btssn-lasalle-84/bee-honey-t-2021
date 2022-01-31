@@ -1,0 +1,219 @@
+\hypertarget{_communication_8java_source}{}\subsection{Communication.\+java}
+\label{_communication_8java_source}\index{Communication.\+java@{Communication.\+java}}
+
+\begin{DoxyCode}
+00001 \textcolor{keyword}{package }com.example.bee\_honeyt;
+00002 
+00003 \textcolor{keyword}{import} android.content.Context;
+00004 \textcolor{keyword}{import} android.os.Bundle;
+00005 \textcolor{keyword}{import} android.os.Handler;
+00006 \textcolor{keyword}{import} android.os.Message;
+00007 \textcolor{keyword}{import} android.util.Log;
+00008 
+00009 \textcolor{keyword}{import} org.eclipse.paho.android.service.MqttAndroidClient;
+00010 \textcolor{keyword}{import} org.eclipse.paho.client.mqttv3.DisconnectedBufferOptions;
+00011 \textcolor{keyword}{import} org.eclipse.paho.client.mqttv3.IMqttActionListener;
+00012 \textcolor{keyword}{import} org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
+00013 \textcolor{keyword}{import} org.eclipse.paho.client.mqttv3.IMqttToken;
+00014 \textcolor{keyword}{import} org.eclipse.paho.client.mqttv3.MqttCallbackExtended;
+00015 \textcolor{keyword}{import} org.eclipse.paho.client.mqttv3.MqttConnectOptions;
+00016 \textcolor{keyword}{import} org.eclipse.paho.client.mqttv3.MqttException;
+00017 \textcolor{keyword}{import} org.eclipse.paho.client.mqttv3.MqttMessage;
+00018 
+\Hypertarget{_communication_8java_source_l00028}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication}{00028} \textcolor{keyword}{public} \textcolor{keyword}{class }\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication}{Communication}
+00029 \{
+\Hypertarget{_communication_8java_source_l00033}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a848338dd9654af654c7e681742666785}{00033}     \textcolor{keyword}{private} \textcolor{keyword}{static} \textcolor{keyword}{final} String \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a848338dd9654af654c7e681742666785}{TAG} = \textcolor{stringliteral}{"\_Communication"};
+00034 
+\Hypertarget{_communication_8java_source_l00038}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a86db63a356e4638c1d39c54bbe64f0e1}{00038}     \textcolor{keyword}{static} \textcolor{keyword}{public} MqttAndroidClient \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a86db63a356e4638c1d39c54bbe64f0e1}{mqttAndroidClient};
+\Hypertarget{_communication_8java_source_l00039}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_add1a0705dba503c1c4c7a3168a571b20}{00039}     \textcolor{keyword}{private} Handler \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_add1a0705dba503c1c4c7a3168a571b20}{handler} = null; \textcolor{comment}{// pour la communication entre classes}
+00040 
+\Hypertarget{_communication_8java_source_l00044}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_ad8ad53a30dea0bfcc57bad80cb67ab92}{00044}     \textcolor{keyword}{public} \textcolor{keyword}{static} \textcolor{keyword}{final} \textcolor{keywordtype}{int} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_ad8ad53a30dea0bfcc57bad80cb67ab92}{TTN\_CONNECTE} = 1;
+\Hypertarget{_communication_8java_source_l00045}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_ae2fba68d5f0ed6c8bdbaaae68a4e6192}{00045}     \textcolor{keyword}{public} \textcolor{keyword}{static} \textcolor{keyword}{final} \textcolor{keywordtype}{int} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_ae2fba68d5f0ed6c8bdbaaae68a4e6192}{TTN\_DECONNECTE} = 2;
+\Hypertarget{_communication_8java_source_l00046}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_aa81848662846946c92ee2b1380669c66}{00046}     \textcolor{keyword}{public} \textcolor{keyword}{static} \textcolor{keyword}{final} \textcolor{keywordtype}{int} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_aa81848662846946c92ee2b1380669c66}{TTN\_MESSAGE} = 3;
+00047 
+\Hypertarget{_communication_8java_source_l00048}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a19b957478f8d8a0d8319e8459d85862e}{00048}     \textcolor{keyword}{private} String \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a19b957478f8d8a0d8319e8459d85862e}{serverUri} = \textcolor{stringliteral}{"tcp://eu.thethings.network:1883"}; 
+00049 
+\Hypertarget{_communication_8java_source_l00052}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a8b44e0173d57396d5478f767723c23cc}{00052}     \textcolor{keyword}{static} \textcolor{keyword}{public} String \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a8b44e0173d57396d5478f767723c23cc}{clientId} = \textcolor{stringliteral}{"rucher"}; 
+\Hypertarget{_communication_8java_source_l00053}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_abfc9c112404b1ddf0fa90587201d5a8f}{00053}     \textcolor{keyword}{private} String \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_abfc9c112404b1ddf0fa90587201d5a8f}{username} = \textcolor{stringliteral}{"rucher"}; 
+\Hypertarget{_communication_8java_source_l00054}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_ace9fdd48d010e4c43cb5d32767207cae}{00054}     \textcolor{keyword}{private} String \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_ace9fdd48d010e4c43cb5d32767207cae}{password} = \textcolor{stringliteral}{"ttn-account-v2.a4GRsjloPzQ\_4hswG-rmWaO9MzWkAtzCvggWeO2DvL4"}; 
+00055 
+\Hypertarget{_communication_8java_source_l00063}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a1f92cddc3a6b011683d0ed8d1371227d}{00063}     \textcolor{keyword}{public} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a1f92cddc3a6b011683d0ed8d1371227d}{Communication}(Context context, \textcolor{keyword}{final} Handler handler)
+00064     \{
+00065         Log.v(TAG, \textcolor{stringliteral}{"[Communication()] clientId = "} + clientId);
+00066         this.handler = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_add1a0705dba503c1c4c7a3168a571b20}{handler};
+00067         mqttAndroidClient = \textcolor{keyword}{new} MqttAndroidClient(context, serverUri, clientId);
+00068         mqttAndroidClient.setCallback(\textcolor{keyword}{new} MqttCallbackExtended()
+00069         \{
+00070             @Override
+00071             \textcolor{keyword}{public} \textcolor{keywordtype}{void} connectComplete(\textcolor{keywordtype}{boolean} b, String s)
+00072             \{
+00073                 Log.w(TAG, \textcolor{stringliteral}{"[connectComplete()] serverUri = "} + s + \textcolor{stringliteral}{" connecte = "} + mqttAndroidClient.
+      isConnected());
+00074                 Message msg = Message.obtain();
+00075                 Bundle bundle = \textcolor{keyword}{new} Bundle();
+00076                 bundle.putInt(\textcolor{stringliteral}{"etat"}, TTN\_CONNECTE); \textcolor{comment}{// clé -> valeur ici etat -> TTN\_CONNECTE}
+00077                 msg.setData(bundle);
+00078                 handler.sendMessage(msg);
+00079             \}
+00080 
+00081             @Override
+00082             \textcolor{keyword}{public} \textcolor{keywordtype}{void} connectionLost(Throwable throwable)
+00083             \{
+00084                 Log.w(TAG, \textcolor{stringliteral}{"[connectionLost()]"});
+00085                 Message msg = Message.obtain();
+00086                 Bundle b = \textcolor{keyword}{new} Bundle();
+00087                 b.putInt(\textcolor{stringliteral}{"etat"}, TTN\_DECONNECTE);
+00088                 msg.setData(b);
+00089                 handler.sendMessage(msg);
+00090             \}
+00091 
+00092             @Override
+00093             \textcolor{keyword}{public} \textcolor{keywordtype}{void} messageArrived(String topic, MqttMessage mqttMessage) \textcolor{keywordflow}{throws} Exception
+00094             \{
+00095                 Log.w(TAG, \textcolor{stringliteral}{"[messageArrived()] topic = "} + topic + \textcolor{stringliteral}{" message = "} + mqttMessage.toString());
+00096                 Message msg = Message.obtain();
+00097                 Bundle b = \textcolor{keyword}{new} Bundle();
+00098                 b.putInt(\textcolor{stringliteral}{"etat"}, TTN\_MESSAGE);
+00099                 b.putString(\textcolor{stringliteral}{"topic"}, topic);
+00100                 b.putString(\textcolor{stringliteral}{"message"}, mqttMessage.toString());
+00101                 msg.setData(b);
+00102                 handler.sendMessage(msg);
+00103             \}
+00104 
+00105             @Override
+00106             \textcolor{keyword}{public} \textcolor{keywordtype}{void} deliveryComplete(IMqttDeliveryToken iMqttDeliveryToken)
+00107             \{
+00108                 Log.w(TAG, \textcolor{stringliteral}{"[deliveryComplete()]"});
+00109             \}
+00110         \});
+00111 
+00112         \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_aadc176b28bce357bf655d0feec024013}{connecter}();
+00113     \}
+00114 
+\Hypertarget{_communication_8java_source_l00121}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a86faf903d7d230a0105b29e5c1d5f4a2}{00121}     \textcolor{keyword}{static} \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a86faf903d7d230a0105b29e5c1d5f4a2}{setCallback}(MqttCallbackExtended callback)
+00122     \{
+00123         mqttAndroidClient.setCallback(callback);
+00124     \}
+00125 
+\Hypertarget{_communication_8java_source_l00131}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_aadc176b28bce357bf655d0feec024013}{00131}     \textcolor{keyword}{private} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_aadc176b28bce357bf655d0feec024013}{connecter}()
+00132     \{
+00133         MqttConnectOptions mqttConnectOptions = \textcolor{keyword}{new} MqttConnectOptions();
+00134         mqttConnectOptions.setAutomaticReconnect(\textcolor{keyword}{true});
+00135         mqttConnectOptions.setCleanSession(\textcolor{keyword}{false});
+00136         mqttConnectOptions.setUserName(username);
+00137         mqttConnectOptions.setPassword(password.toCharArray());
+00138 
+00139         \textcolor{keywordflow}{try}
+00140         \{
+00141             Log.d(TAG, \textcolor{stringliteral}{"[connecter()] serverUri = "} + serverUri + \textcolor{stringliteral}{" clientId = "} + clientId);
+00142             mqttAndroidClient.connect(mqttConnectOptions, null, \textcolor{keyword}{new} IMqttActionListener()
+00143             \{
+00144                 @Override
+00145                 \textcolor{keyword}{public} \textcolor{keywordtype}{void} onSuccess(IMqttToken asyncActionToken)
+00146                 \{
+00147                     DisconnectedBufferOptions disconnectedBufferOptions = \textcolor{keyword}{new} DisconnectedBufferOptions();
+00148                     disconnectedBufferOptions.setBufferEnabled(\textcolor{keyword}{true});
+00149                     disconnectedBufferOptions.setBufferSize(100);
+00150                     disconnectedBufferOptions.setPersistBuffer(\textcolor{keyword}{false});
+00151                     disconnectedBufferOptions.setDeleteOldestMessages(\textcolor{keyword}{false});
+00152                     mqttAndroidClient.setBufferOpts(disconnectedBufferOptions);
+00153                     Log.d(TAG, \textcolor{stringliteral}{"[onSuccess()] serverUri = "} + serverUri + \textcolor{stringliteral}{" clientId = "} + clientId);
+00154                 \}
+00155 
+00156                 @Override
+00157                 \textcolor{keyword}{public} \textcolor{keywordtype}{void} onFailure(IMqttToken asyncActionToken, Throwable exception)
+00158                 \{
+00159                     Log.d(TAG, \textcolor{stringliteral}{"[onFailure()] serverUri = "} + serverUri + \textcolor{stringliteral}{" clientId = "} + clientId + \textcolor{stringliteral}{"
+       exception = "} + exception.toString());
+00160                 \}
+00161             \});
+00162         \}
+00163         \textcolor{keywordflow}{catch} (MqttException e)
+00164         \{
+00165             e.printStackTrace();
+00166         \}
+00167     \}
+00168 
+\Hypertarget{_communication_8java_source_l00174}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_ae0851e23e515c71cfa06cf635c731c07}{00174}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_ae0851e23e515c71cfa06cf635c731c07}{reconnecter}()
+00175     \{
+00176         Log.w(TAG, \textcolor{stringliteral}{"[reconnecter()]"});
+00177         \textcolor{keywordflow}{if} (\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a155e0619c3d504750871a84e637bb808}{estConnecte}())
+00178             \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a55454851f5e883b1539bd60fa7f4bfc6}{deconnecter}();
+00179         \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_aadc176b28bce357bf655d0feec024013}{connecter}();
+00180     \}
+00181 
+\Hypertarget{_communication_8java_source_l00187}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a55454851f5e883b1539bd60fa7f4bfc6}{00187}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a55454851f5e883b1539bd60fa7f4bfc6}{deconnecter}()
+00188     \{
+00189         Log.d(TAG, \textcolor{stringliteral}{"[deconnecter()] serverUri = "} + serverUri + \textcolor{stringliteral}{" clientId = "} + clientId);
+00190         \textcolor{keywordflow}{try}
+00191         \{
+00192             IMqttToken disconToken = mqttAndroidClient.disconnect();
+00193             disconToken.setActionCallback(\textcolor{keyword}{new} IMqttActionListener()
+00194             \{
+00195                 @Override
+00196                 \textcolor{keyword}{public} \textcolor{keywordtype}{void} onSuccess(IMqttToken asyncActionToken)
+00197                 \{
+00198                     Log.d(TAG, \textcolor{stringliteral}{"[onSuccess()] serverUri = "} + serverUri + \textcolor{stringliteral}{" clientId = "} + clientId);
+00199                 \}
+00200 
+00201                 @Override
+00202                 \textcolor{keyword}{public} \textcolor{keywordtype}{void} onFailure(IMqttToken asyncActionToken, Throwable exception)
+00203                 \{
+00204                     Log.d(TAG, \textcolor{stringliteral}{"[onFailure()] serverUri = "} + serverUri + \textcolor{stringliteral}{" clientId = "} + clientId + \textcolor{stringliteral}{"
+       exception = "} + exception.toString());
+00205                 \}
+00206             \});
+00207         \}
+00208         \textcolor{keywordflow}{catch} (MqttException e)
+00209         \{
+00210             e.printStackTrace();
+00211         \}
+00212     \}
+00213 
+\Hypertarget{_communication_8java_source_l00219}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a155e0619c3d504750871a84e637bb808}{00219}     \textcolor{keyword}{static} \textcolor{keyword}{public} \textcolor{keywordtype}{boolean} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a155e0619c3d504750871a84e637bb808}{estConnecte}()
+00220     \{
+00221         Log.w(TAG, \textcolor{stringliteral}{"[estConnecte()] "} + mqttAndroidClient.isConnected());
+00222 
+00223         \textcolor{keywordflow}{return} mqttAndroidClient.isConnected();
+00224     \}
+00225 
+\Hypertarget{_communication_8java_source_l00232}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_aa1093a3d4f3479595a36ef2425f3ef70}{00232}     \textcolor{keyword}{static} \textcolor{keyword}{public} \textcolor{keywordtype}{boolean} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_aa1093a3d4f3479595a36ef2425f3ef70}{souscrireTopic}(String deviceID)
+00233     \{
+00234         \textcolor{comment}{// Vérifications}
+00235         \textcolor{keywordflow}{if}(mqttAndroidClient == null && !mqttAndroidClient.isConnected())
+00236         \{
+00237             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00238         \}
+00239 
+00240         \textcolor{keyword}{final} String topicTTN = clientId + \textcolor{stringliteral}{"/devices/"} + deviceID + \textcolor{stringliteral}{"/up"};
+00241         Log.w(TAG, \textcolor{stringliteral}{"[souscrireTopic()] topic = "} + topicTTN);
+00242         \textcolor{keywordflow}{try}
+00243         \{
+00244             \textcolor{keyword}{final} \textcolor{keywordtype}{boolean}[] retour = \{\textcolor{keyword}{false}\};
+00245             mqttAndroidClient.subscribe(topicTTN, 0, null, \textcolor{keyword}{new} IMqttActionListener()
+00246             \{
+00247                 @Override
+00248                 \textcolor{keyword}{public} \textcolor{keywordtype}{void} onSuccess(IMqttToken asyncActionToken)
+00249                 \{
+00250                     Log.w(TAG, \textcolor{stringliteral}{"[onSuccess()] topic = "} + topicTTN);
+00251                     retour[0] = \textcolor{keyword}{true};
+00252                 \}
+00253 
+00254                 @Override
+00255                 \textcolor{keyword}{public} \textcolor{keywordtype}{void} onFailure(IMqttToken asyncActionToken, Throwable exception)
+00256                 \{
+00257                     Log.w(TAG, \textcolor{stringliteral}{"[onFailure()] topic = "} + topicTTN);
+00258                     retour[0] = \textcolor{keyword}{false};
+00259                 \}
+00260             \});
+00261             \textcolor{keywordflow}{return} retour[0];
+00262         \}
+00263         \textcolor{keywordflow}{catch} (MqttException e)
+00264         \{
+00265             Log.w(TAG, \textcolor{stringliteral}{"Erreur topic = "} + topicTTN);
+00266             e.printStackTrace();
+00267             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00268         \}
+00269     \}
+00270 \}
+\end{DoxyCode}

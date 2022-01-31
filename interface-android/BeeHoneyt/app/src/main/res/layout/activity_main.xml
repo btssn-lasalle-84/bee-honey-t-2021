@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFAB00"
+    android:padding="5dp"
+    tools:context=".IHMMobile">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="781dp"
+        android:layout_height="117dp"
+        android:background="#000C0C0C"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logoclem" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gauche"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.11" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/centre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.76" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/droite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/haut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.12" />
+
+    <TextView
+        android:id="@+id/textViewRuche"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginBottom="75dp"
+        android:text="Ruche :"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/ajoutRuche"
+        app:layout_constraintLeft_toLeftOf="@+id/gauche"
+        app:layout_constraintRight_toLeftOf="@+id/listeRuches"
+        app:layout_constraintTop_toBottomOf="@+id/haut" />
+
+    <Spinner
+        android:id="@+id/listeRuches"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginBottom="75dp"
+        android:background="#00FFFFFF"
+        android:textSize="22sp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toTopOf="@+id/ajoutRuche"
+        app:layout_constraintLeft_toRightOf="@+id/textViewRuche"
+        app:layout_constraintRight_toLeftOf="@+id/etatConnexion"
+        app:layout_constraintTop_toBottomOf="@+id/haut" />
+
+    <TextView
+        android:id="@+id/etatConnexion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="72dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginBottom="75dp"
+        android:text=""
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/ajoutRuche"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/listeRuches"
+        app:layout_constraintTop_toBottomOf="@+id/haut" />
+
+    <TextView
+        android:id="@+id/afficheHorodatage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text=""
+        android:textSize="22sp"
+        app:layout_constraintHorizontal_bias="0.799"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/affichePression" />
+
+    <Button
+        android:id="@+id/supprimeRuche"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        android:drawableBottom="@android:drawable/ic_menu_delete"
+        android:onClick="afficheFenetreSupprimer"
+        android:text="Supprimer\nRuche"
+        app:backgroundTint="#2B2727"
+        app:layout_constraintBottom_toBottomOf="@+id/ajoutRuche"
+        app:layout_constraintEnd_toStartOf="@+id/afficheParametrageAlerte"
+        app:layout_constraintStart_toEndOf="@+id/ajoutRuche"
+        app:layout_constraintTop_toTopOf="@+id/ajoutRuche"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/ajoutRuche"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginBottom="64dp"
+        android:drawableBottom="@android:drawable/ic_menu_add"
+        android:onClick="afficheFenetreAjouter"
+        android:text="Ajouter\nRuche"
+        app:backgroundTint="#2B2727"
+        app:layout_constraintBottom_toTopOf="@+id/afficheTemperatureInterieure"
+        app:layout_constraintEnd_toStartOf="@+id/supprimeRuche"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginBottom="5dp"
+        android:background="#e58e26"
+        android:padding="5dp"
+        android:text="Alertes"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintEnd_toStartOf="@+id/gauche"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="769dp"
+        android:layout_height="261dp"
+        android:layout_marginTop="120dp"
+        android:background="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/affichePression">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/alerteTemperatureInterieure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text=""
+                android:textColor="#FFFFFF"
+                android:textSize="19dp" />
+
+            <TextView
+                android:id="@+id/alerteTemperatureExterieure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text=""
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/alerteHumiditeInterieure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text=""
+                android:textColor="#FFFFFF"
+                android:textSize="19dp" />
+
+            <TextView
+                android:id="@+id/alerteHumiditeExterieure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text=""
+                android:textColor="#FFFFFF"
+                android:textSize="19dp" />
+
+            <TextView
+                android:id="@+id/alertePoids"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text=""
+                android:textColor="#FFFFFF"
+                android:textSize="19dp" />
+
+            <TextView
+                android:id="@+id/alertePression"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text=""
+                android:textColor="#FFFFFF"
+                android:textSize="19dp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/afficheParametrageAlerte"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        android:onClick="afficheFenetreParametrageAlertes"
+        android:text="Paramétrer\nalertes"
+        app:backgroundTint="#2B2727"
+        android:drawableBottom="@android:drawable/ic_menu_manage"
+        app:layout_constraintBottom_toBottomOf="@+id/supprimeRuche"
+        app:layout_constraintEnd_toStartOf="@+id/afficheGraphique"
+        app:layout_constraintStart_toEndOf="@+id/supprimeRuche"
+        app:layout_constraintTop_toTopOf="@+id/supprimeRuche"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/afficheGraphique"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        android:onClick="afficheGraphiques"
+        android:text="Afficher\ngraphiques"
+        app:backgroundTint="#2B2727"
+        android:drawableBottom="@android:drawable/ic_menu_gallery"
+        app:layout_constraintBottom_toBottomOf="@+id/afficheParametrageAlerte"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/afficheParametrageAlerte"
+        app:layout_constraintTop_toTopOf="@+id/afficheParametrageAlerte" />
+
+    <Button
+        android:id="@+id/afficheIHMConnexion"
+        android:layout_width="47dp"
+        android:layout_height="40dp"
+        android:onClick="afficheIHMConnexion"
+        android:text=""
+        app:icon="@android:drawable/ic_lock_power_off"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/ajoutRuche"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.017"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.531" />
+
+    <ImageView
+        android:id="@+id/rucheHumiditeInterieureNormale"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="@+id/afficheHumiditeInterieure"
+        app:layout_constraintEnd_toStartOf="@+id/afficheHumiditeInterieure"
+        app:layout_constraintHorizontal_bias="0.992"
+        app:layout_constraintStart_toEndOf="@+id/afficheTemperatureInterieure"
+        app:layout_constraintTop_toTopOf="@+id/afficheHumiditeInterieure"
+        app:layout_constraintVertical_bias="0.28"
+        app:srcCompat="@drawable/humint" />
+
+    <ImageView
+        android:id="@+id/rucheHumiditeInterieureHaute"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="@+id/afficheHumiditeInterieure"
+        app:layout_constraintEnd_toStartOf="@+id/afficheHumiditeInterieure"
+        app:layout_constraintHorizontal_bias="0.992"
+        app:layout_constraintStart_toEndOf="@+id/afficheTemperatureInterieure"
+        app:layout_constraintTop_toTopOf="@+id/afficheHumiditeInterieure"
+        app:layout_constraintVertical_bias="0.28"
+        app:srcCompat="@drawable/huminthaute" />
+
+    <ImageView
+        android:id="@+id/rucheHumiditeInterieureBasse"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="@+id/afficheHumiditeInterieure"
+        app:layout_constraintEnd_toStartOf="@+id/afficheHumiditeInterieure"
+        app:layout_constraintHorizontal_bias="0.992"
+        app:layout_constraintStart_toEndOf="@+id/afficheTemperatureInterieure"
+        app:layout_constraintTop_toTopOf="@+id/afficheHumiditeInterieure"
+        app:layout_constraintVertical_bias="0.28"
+        app:srcCompat="@drawable/humintbasse" />
+
+    <ImageView
+        android:id="@+id/rucheHumiditeExterieureNormale"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginLeft="128dp"
+        app:layout_constraintBottom_toBottomOf="@+id/afficheHumiditeExterieure"
+        app:layout_constraintStart_toEndOf="@+id/afficheTemperatureExterieure"
+        app:layout_constraintTop_toTopOf="@+id/afficheHumiditeExterieure"
+        app:layout_constraintVertical_bias="0.3"
+        app:srcCompat="@drawable/humext" />
+
+
+    <ImageView
+        android:id="@+id/rucheHumiditeExterieureHaute"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginLeft="128dp"
+        app:layout_constraintBottom_toBottomOf="@+id/afficheHumiditeExterieure"
+        app:layout_constraintStart_toEndOf="@+id/afficheTemperatureExterieure"
+        app:layout_constraintTop_toTopOf="@+id/afficheHumiditeExterieure"
+        app:layout_constraintVertical_bias="0.3"
+        app:srcCompat="@drawable/humextchaud" />
+
+    <ImageView
+        android:id="@+id/rucheHumiditeExterieureBasse"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginLeft="128dp"
+        app:layout_constraintBottom_toBottomOf="@+id/afficheHumiditeExterieure"
+        app:layout_constraintStart_toEndOf="@+id/afficheTemperatureExterieure"
+        app:layout_constraintTop_toTopOf="@+id/afficheHumiditeExterieure"
+        app:layout_constraintVertical_bias="0.3"
+        app:srcCompat="@drawable/humextfroid" />
+
+    <TextView
+        android:id="@+id/afficheTemperatureInterieure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="128dp"
+        android:layout_marginRight="128dp"
+        android:text="-- °C"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toStartOf="@+id/rucheHumiditeExterieureNormale"
+        app:layout_constraintTop_toBottomOf="@+id/ajoutRuche" />
+
+    <ImageView
+        android:id="@+id/ruchePoidsNormale"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="@+id/affichePoids"
+        app:layout_constraintEnd_toStartOf="@+id/affichePoids"
+        app:layout_constraintHorizontal_bias="0.981"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/affichePoids"
+        app:layout_constraintVertical_bias="0.54"
+        app:srcCompat="@drawable/poids" />
+
+    <ImageView
+        android:id="@+id/ruchePoidsTropLourd"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="@+id/affichePoids"
+        app:layout_constraintEnd_toStartOf="@+id/affichePoids"
+        app:layout_constraintHorizontal_bias="0.981"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/affichePoids"
+        app:layout_constraintVertical_bias="0.54"
+        app:srcCompat="@drawable/poidstroplourd" />
+
+    <ImageView
+        android:id="@+id/ruchePoidsTropFaible"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="@+id/affichePoids"
+        app:layout_constraintEnd_toStartOf="@+id/affichePoids"
+        app:layout_constraintHorizontal_bias="0.981"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/affichePoids"
+        app:layout_constraintVertical_bias="0.54"
+        app:srcCompat="@drawable/poidstropfaible" />
+
+    <TextView
+        android:id="@+id/affichePoids"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="284dp"
+        android:layout_marginRight="284dp"
+        android:text="-- kg"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toStartOf="@+id/centre"
+        app:layout_constraintTop_toBottomOf="@+id/afficheTemperatureExterieure" />
+
+    <TextView
+        android:id="@+id/afficheHumiditeExterieure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="86dp"
+        android:background="@android:color/transparent"
+        android:text="-- %"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/affichePression"
+        app:layout_constraintEnd_toStartOf="@+id/centre"
+        app:layout_constraintTop_toBottomOf="@+id/afficheHumiditeInterieure"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/rucheTemperatureExterieureNormale"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        app:layout_constraintBottom_toBottomOf="@+id/afficheTemperatureExterieure"
+        app:layout_constraintEnd_toStartOf="@+id/afficheTemperatureExterieure"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/afficheTemperatureExterieure"
+        app:layout_constraintVertical_bias="0.48"
+        app:srcCompat="@drawable/tempexterieure" />
+
+    <ImageView
+        android:id="@+id/rucheTemperatureExterieureFroid"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        app:layout_constraintBottom_toBottomOf="@+id/afficheTemperatureExterieure"
+        app:layout_constraintEnd_toStartOf="@+id/afficheTemperatureExterieure"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/afficheTemperatureExterieure"
+        app:layout_constraintVertical_bias="0.48"
+        app:srcCompat="@drawable/tempexterieurefroid" />
+
+    <ImageView
+        android:id="@+id/rucheTemperatureExterieurechaud"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        app:layout_constraintBottom_toBottomOf="@+id/afficheTemperatureExterieure"
+        app:layout_constraintEnd_toStartOf="@+id/afficheTemperatureExterieure"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/afficheTemperatureExterieure"
+        app:layout_constraintVertical_bias="0.48"
+        app:srcCompat="@drawable/tempexterieurechaud" />
+
+    <ImageView
+        android:id="@+id/rucheTemperatureInterieureNormale"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="@+id/afficheTemperatureInterieure"
+        app:layout_constraintEnd_toStartOf="@+id/afficheTemperatureInterieure"
+        app:layout_constraintHorizontal_bias="0.963"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/afficheTemperatureInterieure"
+        app:layout_constraintVertical_bias="0.36"
+        app:srcCompat="@drawable/tempinterieure" />
+
+    <ImageView
+        android:id="@+id/rucheTemperatureInterieureChaud"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="@+id/afficheTemperatureInterieure"
+        app:layout_constraintEnd_toStartOf="@+id/afficheTemperatureInterieure"
+        app:layout_constraintHorizontal_bias="0.963"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/afficheTemperatureInterieure"
+        app:layout_constraintVertical_bias="0.36"
+        app:srcCompat="@drawable/tempinterieurechaud" />
+
+    <ImageView
+        android:id="@+id/rucheTemperatureInterieureFroid"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="@+id/afficheTemperatureInterieure"
+        app:layout_constraintEnd_toStartOf="@+id/afficheTemperatureInterieure"
+        app:layout_constraintHorizontal_bias="0.963"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/afficheTemperatureInterieure"
+        app:layout_constraintVertical_bias="0.36"
+        app:srcCompat="@drawable/tempinterieurefroid" />
+
+    <ImageView
+        android:id="@+id/ruchepressionNormale"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="@+id/affichePression"
+        app:layout_constraintEnd_toStartOf="@+id/affichePression"
+        app:layout_constraintHorizontal_bias="0.947"
+        app:layout_constraintStart_toEndOf="@+id/affichePoids"
+        app:layout_constraintTop_toTopOf="@+id/affichePression"
+        app:layout_constraintVertical_bias="0.54"
+        app:srcCompat="@drawable/pressionnormale" />
+
+    <ImageView
+        android:id="@+id/ruchePressionHaute"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="@+id/affichePression"
+        app:layout_constraintEnd_toStartOf="@+id/affichePression"
+        app:layout_constraintHorizontal_bias="0.947"
+        app:layout_constraintStart_toEndOf="@+id/affichePoids"
+        app:layout_constraintTop_toTopOf="@+id/affichePression"
+        app:layout_constraintVertical_bias="0.54"
+        app:srcCompat="@drawable/pressiontrophaute" />
+
+    <ImageView
+        android:id="@+id/ruchePressionBasse"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="@+id/affichePression"
+        app:layout_constraintEnd_toStartOf="@+id/affichePression"
+        app:layout_constraintHorizontal_bias="0.947"
+        app:layout_constraintStart_toEndOf="@+id/affichePoids"
+        app:layout_constraintTop_toTopOf="@+id/affichePression"
+        app:layout_constraintVertical_bias="0.54"
+        app:srcCompat="@drawable/pressiontropbasse" />
+
+    <TextView
+        android:id="@+id/affichePression"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="188dp"
+        android:layout_marginRight="188dp"
+        android:text="-- hPa"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rucheHumiditeExterieureNormale" />
+
+    <TextView
+        android:id="@+id/afficheTemperatureExterieure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="288dp"
+        android:layout_marginRight="288dp"
+        android:text="-- °C"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toStartOf="@+id/centre"
+        app:layout_constraintTop_toBottomOf="@+id/afficheTemperatureInterieure" />
+
+    <TextView
+        android:id="@+id/afficheHumiditeInterieure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="216dp"
+        android:layout_marginRight="216dp"
+        android:text="-- %"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/afficheGraphique" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

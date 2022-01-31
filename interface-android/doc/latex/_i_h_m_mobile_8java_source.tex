@@ -1,0 +1,684 @@
+\hypertarget{_i_h_m_mobile_8java_source}{}\subsection{I\+H\+M\+Mobile.\+java}
+\label{_i_h_m_mobile_8java_source}\index{I\+H\+M\+Mobile.\+java@{I\+H\+M\+Mobile.\+java}}
+
+\begin{DoxyCode}
+00001 \textcolor{keyword}{package }com.example.bee\_honeyt;
+00002 
+00003 \textcolor{keyword}{import} androidx.appcompat.app.AppCompatActivity;
+00004 
+00005 \textcolor{keyword}{import} android.graphics.Color;
+00006 \textcolor{keyword}{import} android.os.Bundle;
+00007 \textcolor{keyword}{import} android.os.Handler;
+00008 \textcolor{keyword}{import} android.os.Message;
+00009 \textcolor{keyword}{import} android.util.Log;
+00010 \textcolor{keyword}{import} android.view.View;
+00011 \textcolor{keyword}{import} android.widget.AdapterView;
+00012 \textcolor{keyword}{import} android.widget.ArrayAdapter;
+00013 \textcolor{keyword}{import} android.widget.Spinner;
+00014 \textcolor{keyword}{import} android.widget.TextView;
+00015 
+00016 \textcolor{keyword}{import} java.text.ParseException;
+00017 \textcolor{keyword}{import} java.text.SimpleDateFormat;
+00018 \textcolor{keyword}{import} java.util.ArrayList;
+00019 \textcolor{keyword}{import} java.util.Date;
+00020 \textcolor{keyword}{import} java.util.Iterator;
+00021 \textcolor{keyword}{import} java.util.List;
+00022 \textcolor{keyword}{import} java.util.Locale;
+00023 \textcolor{keyword}{import} java.util.TimeZone;
+00024 \textcolor{keyword}{import} java.util.Vector;
+00025 \textcolor{keyword}{import} java.util.regex.Matcher;
+00026 \textcolor{keyword}{import} java.util.regex.Pattern;
+00027 
+00028 \textcolor{keyword}{import} org.json.JSONException;
+00029 \textcolor{keyword}{import} org.json.JSONObject;
+00030 
+\Hypertarget{_i_h_m_mobile_8java_source_l00043}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile}{00043} \textcolor{keyword}{public} \textcolor{keyword}{class }\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile}{IHMMobile} \textcolor{keyword}{extends} AppCompatActivity
+00044 \{
+00045     \textcolor{comment}{// Les constantes}
+\Hypertarget{_i_h_m_mobile_8java_source_l00046}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a366987bf9bb2ed1010b2f967d4efa263}{00046}     \textcolor{keyword}{private} \textcolor{keyword}{static} \textcolor{keyword}{final} String \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a366987bf9bb2ed1010b2f967d4efa263}{TAG} = \textcolor{stringliteral}{"\_IHMMobile"}; 
+\Hypertarget{_i_h_m_mobile_8java_source_l00047}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a2e9be0481d1498b9883b92bcb4d51619}{00047}     \textcolor{keyword}{private} \textcolor{keyword}{static} \textcolor{keyword}{final} \textcolor{keywordtype}{int} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a2e9be0481d1498b9883b92bcb4d51619}{EXTRAIRE\_DONNEE\_POIDS} = 1;
+\Hypertarget{_i_h_m_mobile_8java_source_l00048}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_aea71e02f7d7a9a5767821ba3803bdd80}{00048}     \textcolor{keyword}{private} \textcolor{keyword}{static} \textcolor{keyword}{final} \textcolor{keywordtype}{int} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_aea71e02f7d7a9a5767821ba3803bdd80}{EXTRAIRE\_DONNNEES\_ENVIRONEMENT} = 2;
+\Hypertarget{_i_h_m_mobile_8java_source_l00049}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a5cc87519c4cba4d1f16dd98e300487a2}{00049}     \textcolor{keyword}{private} \textcolor{keyword}{static} \textcolor{keyword}{final} \textcolor{keywordtype}{int} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a5cc87519c4cba4d1f16dd98e300487a2}{EXTRAIRE\_DONNEE\_CHARGE} = 3;
+00050 
+\Hypertarget{_i_h_m_mobile_8java_source_l00051}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a92fe694fa515e68960a0add6212b2e86}{00051}     \textcolor{keyword}{private} \textcolor{keyword}{static} \textcolor{keyword}{final} String \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a92fe694fa515e68960a0add6212b2e86}{APPLICATION\_ID} = \textcolor{stringliteral}{"rucher"};
+\Hypertarget{_i_h_m_mobile_8java_source_l00052}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_aa49d99fb22c1f7d014bfb60d1d322fc6}{00052}     \textcolor{keyword}{private} \textcolor{keyword}{static} \textcolor{keyword}{final} \textcolor{keywordtype}{int} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_aa49d99fb22c1f7d014bfb60d1d322fc6}{CHAMP\_TOPIC\_APPLICATION\_ID} = 0;
+\Hypertarget{_i_h_m_mobile_8java_source_l00053}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ac6703593d2a2d227d51c89b8185060fc}{00053}     \textcolor{keyword}{private} \textcolor{keyword}{static} \textcolor{keyword}{final} \textcolor{keywordtype}{int} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ac6703593d2a2d227d51c89b8185060fc}{CHAMP\_TOPIC\_DEVICE\_ID} = 1;
+00054 
+00055     \textcolor{comment}{// Les attributs}
+\Hypertarget{_i_h_m_mobile_8java_source_l00056}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a80b422d45e9b5c91f7bcad1dca4ad292}{00056}     \textcolor{keyword}{private} \textcolor{keyword}{static} Vector<Ruche> \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a80b422d45e9b5c91f7bcad1dca4ad292}{rucher}; 
+\Hypertarget{_i_h_m_mobile_8java_source_l00057}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_af59d4b185d3931df2e98568e99673778}{00057}     \textcolor{keyword}{private} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche}{Ruche} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_af59d4b185d3931df2e98568e99673778}{rucheSelectionnee}; \textcolor{comment}{// La ruche courante}
+\Hypertarget{_i_h_m_mobile_8java_source_l00058}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_afafe74da6dfeae76058bfbf17d4d23b3}{00058}     \textcolor{keyword}{private} ArrayAdapter<String> \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_afafe74da6dfeae76058bfbf17d4d23b3}{adapterRuche}; 
+\Hypertarget{_i_h_m_mobile_8java_source_l00059}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a832529dab7bfae5405c5496e971e8c84}{00059}     \textcolor{keyword}{private} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication}{Communication} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a832529dab7bfae5405c5496e971e8c84}{communicationMQTT};
+00060 
+00061     \textcolor{comment}{// Les éléments graphiques de l'IHM}
+\Hypertarget{_i_h_m_mobile_8java_source_l00062}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a7275bce8e0026b1043371e6878ff65c1}{00062}     \textcolor{keyword}{private} Spinner \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a7275bce8e0026b1043371e6878ff65c1}{listeRuches}; 
+\Hypertarget{_i_h_m_mobile_8java_source_l00063}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ac553e3089f95a9fec9ec7345ad3aefcd}{00063}     \textcolor{keyword}{private} TextView \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ac553e3089f95a9fec9ec7345ad3aefcd}{afficheTemperatureInterieur};
+\Hypertarget{_i_h_m_mobile_8java_source_l00064}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a102530688eabbb8bfa549291b51a78ba}{00064}     \textcolor{keyword}{private} TextView \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a102530688eabbb8bfa549291b51a78ba}{afficheTemperatureExterieur};
+\Hypertarget{_i_h_m_mobile_8java_source_l00065}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_af061affda51e77bec2c6850b3895dc76}{00065}     \textcolor{keyword}{private} TextView \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_af061affda51e77bec2c6850b3895dc76}{afficheHumiditeInterieur};
+\Hypertarget{_i_h_m_mobile_8java_source_l00066}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_aa75e62918ab5b0322199d3a9919de17b}{00066}     \textcolor{keyword}{private} TextView \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_aa75e62918ab5b0322199d3a9919de17b}{afficheHumiditeExterieur};
+\Hypertarget{_i_h_m_mobile_8java_source_l00067}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a83854ea1a388eb4919c953ef00e8fa7f}{00067}     \textcolor{keyword}{private} TextView \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a83854ea1a388eb4919c953ef00e8fa7f}{affichePoids};
+\Hypertarget{_i_h_m_mobile_8java_source_l00068}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a2bc1237c9f17c51c2f506c31fba5b264}{00068}     \textcolor{keyword}{private} TextView \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a2bc1237c9f17c51c2f506c31fba5b264}{affichePression};
+\Hypertarget{_i_h_m_mobile_8java_source_l00069}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_af83151ec51b1f533802cf95057667215}{00069}     \textcolor{keyword}{private} TextView \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_af83151ec51b1f533802cf95057667215}{afficheCharge};
+\Hypertarget{_i_h_m_mobile_8java_source_l00070}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a624f148d43715aa48ba84e749637c2a5}{00070}     \textcolor{keyword}{private} TextView \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a624f148d43715aa48ba84e749637c2a5}{afficheHorodatage};
+\Hypertarget{_i_h_m_mobile_8java_source_l00071}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_af2248fbfeeed19f1256db84bf3a4dc94}{00071}     \textcolor{keyword}{private} TextView \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_af2248fbfeeed19f1256db84bf3a4dc94}{afficheConnexion};
+\Hypertarget{_i_h_m_mobile_8java_source_l00072}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a6387ccc4e8483220e821e9e88f7d3964}{00072}     \textcolor{keyword}{private} TextView \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a6387ccc4e8483220e821e9e88f7d3964}{afficheDeconnexion};
+00073 
+00077     @Override
+\Hypertarget{_i_h_m_mobile_8java_source_l00078}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_af487b0250bfc0e873fe3a4f495c3ef5e}{00078}     \textcolor{keyword}{protected} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_af487b0250bfc0e873fe3a4f495c3ef5e}{onCreate}(Bundle savedInstanceState)
+00079     \{
+00080         super.onCreate(savedInstanceState);
+00081         setContentView(R.layout.activity\_main);
+00082         Log.d(TAG,\textcolor{stringliteral}{"onCreate()"});
+00083 
+00084         \textcolor{comment}{// Crée un rucher de test (avec les simulateurs)}
+00085         rucher = \textcolor{keyword}{new} Vector<Ruche>();
+00086         rucher.add(\textcolor{keyword}{new} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche}{Ruche}(\textcolor{stringliteral}{"Ruche 1"}, \textcolor{stringliteral}{"ruche-1-sim"}));
+00087         rucher.add(\textcolor{keyword}{new} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche}{Ruche}(\textcolor{stringliteral}{"Ruche 2"}, \textcolor{stringliteral}{"ruche-2-sim"}));
+00088         rucher.add(\textcolor{keyword}{new} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche}{Ruche}(\textcolor{stringliteral}{"Ruche BeeHoneyT"}, \textcolor{stringliteral}{"bee\_honeyt"}));
+00089 
+00090         \textcolor{comment}{// On sélectionne une ruche par défaut}
+00091         rucheSelectionnee = rucher.get(0);
+00092 
+00093         \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a4aa9d23a3aebf2d1a3cd62a15a4e0f2d}{initialiserIHM}();
+00094 
+00095         communicationMQTT = \textcolor{keyword}{new} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication}{Communication}(getApplicationContext(), 
+      \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ab04ad38c9ee9a2621cb1b10cc2da1df2}{handler});
+00096     \}
+00097 
+00101     @Override
+\Hypertarget{_i_h_m_mobile_8java_source_l00102}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_abab25414f97d4793152b39c2deb8365b}{00102}     \textcolor{keyword}{protected} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_abab25414f97d4793152b39c2deb8365b}{onStart}()
+00103     \{
+00104         super.onStart();
+00105         Log.d(TAG,\textcolor{stringliteral}{"onStart()"});
+00106     \}
+00107 
+00111     @Override
+\Hypertarget{_i_h_m_mobile_8java_source_l00112}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_aa8e9489786f095aee58ae5895b118ef6}{00112}     \textcolor{keyword}{protected} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_aa8e9489786f095aee58ae5895b118ef6}{onResume}()
+00113     \{
+00114         super.onResume();
+00115         Log.d(TAG,\textcolor{stringliteral}{"onResume()"});
+00116     \}
+00117 
+00121     @Override
+\Hypertarget{_i_h_m_mobile_8java_source_l00122}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a8b2f247beaf4e5f146c579b38d8bdee9}{00122}     \textcolor{keyword}{protected} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a8b2f247beaf4e5f146c579b38d8bdee9}{onPause}()
+00123     \{
+00124         super.onPause();
+00125         Log.d(TAG,\textcolor{stringliteral}{"onPause()"});
+00126     \}
+00127 
+00131     @Override
+\Hypertarget{_i_h_m_mobile_8java_source_l00132}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ad341d4dd8d326f2ecdca7a5447c3f8a4}{00132}     \textcolor{keyword}{protected} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ad341d4dd8d326f2ecdca7a5447c3f8a4}{onStop}()
+00133     \{
+00134         super.onStop();
+00135         Log.d(TAG,\textcolor{stringliteral}{"onStop()"});
+00136 
+00137     \}
+00138 
+00142     @Override
+\Hypertarget{_i_h_m_mobile_8java_source_l00143}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a35ee33d6497d0ed0a5acacefaebce63a}{00143}     \textcolor{keyword}{protected} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a35ee33d6497d0ed0a5acacefaebce63a}{onDestroy}()
+00144     \{
+00145         super.onDestroy();
+00146         Log.d(TAG,\textcolor{stringliteral}{"onDestroy()"});
+00147 
+00148     \}
+\Hypertarget{_i_h_m_mobile_8java_source_l00152}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a4aa9d23a3aebf2d1a3cd62a15a4e0f2d}{00152}     \textcolor{keyword}{private} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a4aa9d23a3aebf2d1a3cd62a15a4e0f2d}{initialiserIHM}()
+00153     \{
+00154         \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a1fb171bee5ff2ce052ad88fb9bc84718}{initialiserListeRuches}();
+00155 
+00156         \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ac0f55897a183a0887c87954f6fbfdf2f}{afficherTemperatureInterieure}(0.0);
+00157         \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_af7ce50e9cc663c2c9198bbbb2b7882ff}{afficherTemperatureExterieure}(0.0);
+00158         \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ae59dbfdcd0be7d98bb714398931028b5}{afficherHumiditeInterieure}(0);
+00159         \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a8571df97f453ee83c35d653b06127691}{afficherHumiditeExterieure}(0);
+00160         \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a2f4fe6cded3a35b0152e43d546be5565}{afficherPoids}(0.0);
+00161         \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a92bb00501214f2f5f9805a005f1ecdaa}{afficherPression}(0);
+00162         \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a64c55ee927d9cb31265989d0296edc53}{afficherCharge}(0);
+00163         \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ae1a488c4774eea0b794257f576ab932d}{afficherHorodatage}(\textcolor{stringliteral}{""});
+00164         \textcolor{comment}{//...}
+00165     \}
+00166 
+\Hypertarget{_i_h_m_mobile_8java_source_l00170}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a1fb171bee5ff2ce052ad88fb9bc84718}{00170}     \textcolor{keyword}{private} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a1fb171bee5ff2ce052ad88fb9bc84718}{initialiserListeRuches}()
+00171     \{
+00172         listeRuches = findViewById(R.id.listeRuches);
+00173 
+00174         List<String> listeNomsRuches = \textcolor{keyword}{new} ArrayList<String>();
+00175         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < rucher.size(); i++)
+00176         \{
+00177             listeNomsRuches.add(rucher.get(i).getNom());
+00178         \}
+00179 
+00180         adapterRuche = \textcolor{keyword}{new} ArrayAdapter<String>(\textcolor{keyword}{this}, R.layout.support\_simple\_spinner\_dropdown\_item, 
+      listeNomsRuches);
+00181         adapterRuche.setDropDownViewResource(android.R.layout.simple\_spinner\_dropdown\_item);
+00182         listeRuches.setAdapter(adapterRuche);
+00183 
+00184         listeRuches.setOnItemSelectedListener(\textcolor{keyword}{new} AdapterView.OnItemSelectedListener()
+00185         \{
+00186             @Override
+00187             \textcolor{keyword}{public} \textcolor{keywordtype}{void} onItemSelected(AdapterView<?> parent, View view, \textcolor{keywordtype}{int} position, \textcolor{keywordtype}{long} \textcolor{keywordtype}{id})
+00188             \{
+00189                 Log.d(TAG, \textcolor{stringliteral}{"listeRuches onItemSelected()"});
+00190                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < rucher.size(); i++)
+00191                 \{
+00192                     \textcolor{keywordflow}{if} (rucher.get(i).getNom().equals(listeNomsRuches.get(position)))
+00193                     \{
+00194                         Log.d(TAG, \textcolor{stringliteral}{"Sélection : "} + rucher.get(i).getNom());
+00195 
+00196                         ((TextView) parent.getChildAt(0)).setTextColor(Color.BLUE);
+00197                         ((TextView) parent.getChildAt(0)).setTextSize(22);
+00198 
+00199                         rucheSelectionnee = rucher.get(i);
+00200 
+00201                         \textcolor{comment}{// Affichage des données de la ruche sélectionnée}
+00202                         \textcolor{keywordtype}{double} temperatureInterieure = rucheSelectionnee.
+      \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_afab94785f8af31f6ce436394ab41c9f3}{getMesureRuche}().\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_ab552e0788fc7dba1e9ef83a0fce861f8}{getTemperatureInterieur}();
+00203                         \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ac0f55897a183a0887c87954f6fbfdf2f}{afficherTemperatureInterieure}(temperatureInterieure);
+00204                         \textcolor{keywordtype}{double} temperatureExterieure = rucheSelectionnee.
+      \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_afab94785f8af31f6ce436394ab41c9f3}{getMesureRuche}().\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a8628b499066f185d78ae015ce50557a8}{getTemperatureExterieur}();
+00205                         \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_af7ce50e9cc663c2c9198bbbb2b7882ff}{afficherTemperatureExterieure}(temperatureExterieure);
+00206                         \textcolor{keywordtype}{int} humiditeInterieure = rucheSelectionnee.
+      \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_afab94785f8af31f6ce436394ab41c9f3}{getMesureRuche}().\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_af78ac1f237287bff4e1a36bebf8bbeef}{getHumiditeInterieur}();
+00207                         \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ae59dbfdcd0be7d98bb714398931028b5}{afficherHumiditeInterieure}(humiditeInterieure);
+00208                         \textcolor{keywordtype}{int} humiditeExterieure = rucheSelectionnee.
+      \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_afab94785f8af31f6ce436394ab41c9f3}{getMesureRuche}().\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_ab16738883de0f1535d25bc36b828cc7a}{getHumiditeExterieur}();
+00209                         \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a8571df97f453ee83c35d653b06127691}{afficherHumiditeExterieure}(humiditeExterieure);
+00210                         \textcolor{keywordtype}{double} poids = rucheSelectionnee.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_afab94785f8af31f6ce436394ab41c9f3}{getMesureRuche}().
+      \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_aff130b4038e223f3ec83769fc354a007}{getPoids}();
+00211                         \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a2f4fe6cded3a35b0152e43d546be5565}{afficherPoids}(poids);
+00212                         \textcolor{keywordtype}{int} pression = rucheSelectionnee.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_afab94785f8af31f6ce436394ab41c9f3}{getMesureRuche}().
+      \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a68c21cc141b1103fb3746075657bd4fd}{getPression}();
+00213                         \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a92bb00501214f2f5f9805a005f1ecdaa}{afficherPression}(pression);
+00214                         \textcolor{keywordtype}{int} charge = rucheSelectionnee.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_afab94785f8af31f6ce436394ab41c9f3}{getMesureRuche}().
+      \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a5fb489924272149140eb7a4c81cacaec}{getCharge}();
+00215                         \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a64c55ee927d9cb31265989d0296edc53}{afficherCharge}(charge);
+00216                         String horodatage = rucheSelectionnee.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a864e48de51e9b0e8e5c78ed7fe58a2d9}{getHorodatage}();
+00217                         \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ae1a488c4774eea0b794257f576ab932d}{afficherHorodatage}(horodatage);
+00218                         \textcolor{keywordflow}{break};
+00219                     \}
+00220                 \}
+00221             \}
+00222 
+00223             @Override
+00224             \textcolor{keyword}{public} \textcolor{keywordtype}{void} onNothingSelected(AdapterView<?> parent)
+00225             \{
+00226 
+00227             \}
+00228         \});
+00229     \}
+00230 
+\Hypertarget{_i_h_m_mobile_8java_source_l00235}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ac0f55897a183a0887c87954f6fbfdf2f}{00235}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ac0f55897a183a0887c87954f6fbfdf2f}{afficherTemperatureInterieure}(\textcolor{keywordtype}{double} temperatureInterieure)
+00236     \{
+00237         afficheTemperatureInterieur = (TextView) findViewById(R.id.afficheTemperatureInterieur);
+00238         afficheTemperatureInterieur.setText(\textcolor{stringliteral}{"Température int. : "} + temperatureInterieure + \textcolor{stringliteral}{" °C"});
+00239     \}
+\Hypertarget{_i_h_m_mobile_8java_source_l00244}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_af7ce50e9cc663c2c9198bbbb2b7882ff}{00244}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_af7ce50e9cc663c2c9198bbbb2b7882ff}{afficherTemperatureExterieure}(\textcolor{keywordtype}{double} temperatureExterieure)
+00245     \{
+00246         afficheTemperatureExterieur = (TextView) findViewById(R.id.afficheTemperatureExterieur);
+00247         afficheTemperatureExterieur.setText(\textcolor{stringliteral}{"Température ext. : "} + temperatureExterieure + \textcolor{stringliteral}{" °C"});
+00248     \}
+\Hypertarget{_i_h_m_mobile_8java_source_l00253}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ae59dbfdcd0be7d98bb714398931028b5}{00253}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ae59dbfdcd0be7d98bb714398931028b5}{afficherHumiditeInterieure}(\textcolor{keywordtype}{int} humiditeInterieure)
+00254     \{
+00255         afficheHumiditeInterieur = (TextView) findViewById(R.id.afficheHumiditeInterieur);
+00256         afficheHumiditeInterieur.setText(\textcolor{stringliteral}{"Humidité int. : "} + humiditeInterieure + \textcolor{stringliteral}{" %"});
+00257     \}
+\Hypertarget{_i_h_m_mobile_8java_source_l00262}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a8571df97f453ee83c35d653b06127691}{00262}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a8571df97f453ee83c35d653b06127691}{afficherHumiditeExterieure}(\textcolor{keywordtype}{int} humiditeExterieure)
+00263     \{
+00264         afficheHumiditeExterieur = (TextView) findViewById(R.id.afficheHumiditeExterieur);
+00265         afficheHumiditeExterieur.setText(\textcolor{stringliteral}{"Humidité ext. : "} + humiditeExterieure + \textcolor{stringliteral}{" %"});
+00266     \}
+\Hypertarget{_i_h_m_mobile_8java_source_l00271}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a2f4fe6cded3a35b0152e43d546be5565}{00271}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a2f4fe6cded3a35b0152e43d546be5565}{afficherPoids}(\textcolor{keywordtype}{double} poids)
+00272     \{
+00273         affichePoids = (TextView) findViewById(R.id.affichePoids);
+00274         affichePoids.setText(\textcolor{stringliteral}{"Poids : "} + poids + \textcolor{stringliteral}{" Kg"});
+00275     \}
+\Hypertarget{_i_h_m_mobile_8java_source_l00280}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a92bb00501214f2f5f9805a005f1ecdaa}{00280}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a92bb00501214f2f5f9805a005f1ecdaa}{afficherPression}(\textcolor{keywordtype}{int} pression)
+00281     \{
+00282         affichePression = (TextView) findViewById(R.id.affichePression);
+00283         affichePression.setText(\textcolor{stringliteral}{"Pression : "} + pression  + \textcolor{stringliteral}{" hPa"});
+00284     \}
+\Hypertarget{_i_h_m_mobile_8java_source_l00289}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a64c55ee927d9cb31265989d0296edc53}{00289}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a64c55ee927d9cb31265989d0296edc53}{afficherCharge}(\textcolor{keywordtype}{int} charge)
+00290     \{
+00291         afficheCharge = (TextView) findViewById(R.id.afficheCharge);
+00292         afficheCharge.setText(\textcolor{stringliteral}{"Charge : "} + charge  + \textcolor{stringliteral}{" %"});
+00293     \}
+\Hypertarget{_i_h_m_mobile_8java_source_l00298}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ae1a488c4774eea0b794257f576ab932d}{00298}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ae1a488c4774eea0b794257f576ab932d}{afficherHorodatage}(String horodatage)
+00299     \{
+00300         afficheHorodatage = (TextView) findViewById(R.id.afficheHorodatage);
+00301         afficheHorodatage.setText(horodatage);
+00302     \}
+\Hypertarget{_i_h_m_mobile_8java_source_l00306}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a09149878e7ab1c24fa1b3aea037bd3fc}{00306}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a09149878e7ab1c24fa1b3aea037bd3fc}{afficherConnexion}(String connexion)
+00307     \{
+00308         connexion = \textcolor{stringliteral}{"Connecté"};
+00309         afficheConnexion = (TextView) findViewById(R.id.afficheConnexion);
+00310         afficheConnexion.setText(connexion);
+00311     \}
+00312 
+\Hypertarget{_i_h_m_mobile_8java_source_l00313}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a8eeb63d847d450223c641107e2f27f1a}{00313}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a8eeb63d847d450223c641107e2f27f1a}{afficherDeconnexion}(String deconnexion)
+00314     \{
+00315         deconnexion = \textcolor{stringliteral}{"Deconnecté"};
+00316         afficheDeconnexion = (TextView) findViewById(R.id.afficheDeconnexion);
+00317         afficheDeconnexion.setText(deconnexion);
+00318     \}
+\Hypertarget{_i_h_m_mobile_8java_source_l00322}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ab04ad38c9ee9a2621cb1b10cc2da1df2}{00322}     \textcolor{keyword}{final} \textcolor{keyword}{private} Handler \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ab04ad38c9ee9a2621cb1b10cc2da1df2}{handler} = \textcolor{keyword}{new} Handler()
+00323     \{
+00324         @Override
+00325         \textcolor{keyword}{public} \textcolor{keywordtype}{void} handleMessage(Message msg)
+00326         \{
+00327             super.handleMessage(msg);
+00328 
+00329             Bundle bundle = msg.getData();
+00330 
+00331             \textcolor{keywordflow}{switch}(bundle.getInt(\textcolor{stringliteral}{"etat"}))
+00332             \{
+00333                 \textcolor{keywordflow}{case} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication}{Communication}.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_ad8ad53a30dea0bfcc57bad80cb67ab92}{TTN\_CONNECTE}:
+00334                     Log.d(TAG, \textcolor{stringliteral}{"handleMessage() TTN connecté"});
+00338                     String connexion = \textcolor{stringliteral}{""};
+00339                     \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a09149878e7ab1c24fa1b3aea037bd3fc}{afficherConnexion}(connexion);
+00340                     \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ac255143b5796de6ee0be9852d2b89396}{abonnerRuches}();
+00341                     \textcolor{keywordflow}{break};
+00342                 \textcolor{keywordflow}{case} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication}{Communication}.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_ae2fba68d5f0ed6c8bdbaaae68a4e6192}{TTN\_DECONNECTE}:
+00343                     Log.d(TAG, \textcolor{stringliteral}{"handleMessage() TTN déconnecté"});
+00347                     String deconnexion = \textcolor{stringliteral}{""};
+00348                     \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a8eeb63d847d450223c641107e2f27f1a}{afficherDeconnexion}(deconnexion);
+00352                     \textcolor{keywordflow}{break};
+00353                 \textcolor{keywordflow}{case} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication}{Communication}.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_aa81848662846946c92ee2b1380669c66}{TTN\_MESSAGE}:
+00354                     Log.d(TAG, \textcolor{stringliteral}{"handleMessage() TTN topic = "} + bundle.getString(\textcolor{stringliteral}{"topic"}) + \textcolor{stringliteral}{" message = "} +
+       bundle.getString(\textcolor{stringliteral}{"message"}));
+00355                     String topic = bundle.getString(\textcolor{stringliteral}{"topic"});
+00356 
+00357                     \textcolor{comment}{//decoderTopic(topic); // pour déboguage}
+00358                     String deviceId = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ab957cc8fd25c104c48341f7e4141e173}{extraireDeviceId}(topic);
+00359 
+00360                     \textcolor{comment}{// Filtrer le deviceId avec celui de la ruche sélectionnée}
+00361                     Log.d(TAG, \textcolor{stringliteral}{"handleMessage() deviceId = "} + deviceId + \textcolor{stringliteral}{" ? "} + rucheSelectionnee.
+      \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a4960ba8542f507c850978b939b9aa9e5}{getDeviceID}());
+00362                     \textcolor{keywordflow}{if}(deviceId.equals(rucheSelectionnee.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a4960ba8542f507c850978b939b9aa9e5}{getDeviceID}()))
+00363                     \{
+00364                         Log.d(TAG, \textcolor{stringliteral}{"handleMessage() Données pour la ruche = "} + rucheSelectionnee.
+      \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a940047f0b4b8218e7faa7eafcc9665b2}{getNom}() + \textcolor{stringliteral}{" !!!"});
+00365                         String message = bundle.getString(\textcolor{stringliteral}{"message"});
+00366                         \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a4183e896e4eab05e7ca92735199425fa}{traiterMessage}(message);
+00367                     \}
+00368                     \textcolor{keywordflow}{break};
+00369             \}
+00370         \}
+00371     \};
+00372 
+00373 
+\Hypertarget{_i_h_m_mobile_8java_source_l00374}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a4183e896e4eab05e7ca92735199425fa}{00374}     \textcolor{keyword}{private} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a4183e896e4eab05e7ca92735199425fa}{traiterMessage}(String message)
+00375     \{
+00376         \textcolor{keywordtype}{int} port = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_abc4571bc8b1400c6d75c0a2594b0abe6}{extrairePort}(message);
+00377         String payloadFields = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a2f781039138b814510102847e70917a1}{extraireDonneeMessage}(message);
+00378         String metaData = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_aabe15decc02b7f56a82f60dac75f8c2f}{extraireHorodatageMessage}(message);
+00379 
+00380         \textcolor{keywordflow}{switch} (port)
+00381         \{
+00382             \textcolor{keywordflow}{case} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a2e9be0481d1498b9883b92bcb4d51619}{EXTRAIRE\_DONNEE\_POIDS}:
+00383                 \textcolor{keywordtype}{double} poids = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ad702e818ba1d861f26accfd6a0194b86}{extrairePoids}(payloadFields);
+00384                 \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a2f4fe6cded3a35b0152e43d546be5565}{afficherPoids}(poids);
+00385                 \textcolor{keywordflow}{break};
+00386             \textcolor{keywordflow}{case} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_aea71e02f7d7a9a5767821ba3803bdd80}{EXTRAIRE\_DONNNEES\_ENVIRONEMENT}:
+00387                 \textcolor{keywordtype}{double} temperatureInterieure = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a714f52f4793f22a08a773b1bf35dd015}{extraireTemperatureInterieure}(
+      payloadFields);
+00388                 rucheSelectionnee.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_afab94785f8af31f6ce436394ab41c9f3}{getMesureRuche}().
+      \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a5364a38970b37df66bb8cb6f5b3d3741}{setTemperatureInterieure}(temperatureInterieure);
+00389                 \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ac0f55897a183a0887c87954f6fbfdf2f}{afficherTemperatureInterieure}(temperatureInterieure);
+00390                 \textcolor{keywordtype}{double} temperatureExterieure = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a80b9ad15fb6aa3591cf600892b1325b9}{extraireTemperatureExterieure}(
+      payloadFields);
+00391                 rucheSelectionnee.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_afab94785f8af31f6ce436394ab41c9f3}{getMesureRuche}().
+      \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a41591480ad8be13a1c7e2e7049dc7935}{setTemperatureExterieure}(temperatureExterieure);
+00392                 \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_af7ce50e9cc663c2c9198bbbb2b7882ff}{afficherTemperatureExterieure}(temperatureExterieure);
+00393                 \textcolor{keywordtype}{int} humiditeInterieure = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_afb44a51a66e904c2b3e5229ab5144f56}{extraireHumiditeInterieure}(payloadFields
+      );
+00394                 rucheSelectionnee.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_afab94785f8af31f6ce436394ab41c9f3}{getMesureRuche}().
+      \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a8f2d166ffd8340562d9e5cbe5ea5f907}{setHumiditeInterieure}(humiditeInterieure);
+00395                 \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ae59dbfdcd0be7d98bb714398931028b5}{afficherHumiditeInterieure}(humiditeInterieure);
+00396                 \textcolor{keywordtype}{int} humiditeExterieure = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a9a8131f2198266585e602e6fe9d29ef0}{extraireHumiditeExterieure}(payloadFields
+      );
+00397                 rucheSelectionnee.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_afab94785f8af31f6ce436394ab41c9f3}{getMesureRuche}().
+      \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_aacb223667567aa9c8a73535f43cda985}{setHumiditeExterieure}(humiditeExterieure);
+00398                 \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a8571df97f453ee83c35d653b06127691}{afficherHumiditeExterieure}(humiditeExterieure);
+00399                 \textcolor{keywordtype}{int} pression = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ad49ff3588da89162f21ca8e983a0fb4c}{extrairePression}(payloadFields);
+00400                 rucheSelectionnee.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_afab94785f8af31f6ce436394ab41c9f3}{getMesureRuche}().\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a87cff86af4a7e977aac1caeaf6a37bc8}{setPression}(pression);
+00401                 \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a92bb00501214f2f5f9805a005f1ecdaa}{afficherPression}(pression);
+00402                 \textcolor{keywordflow}{break};
+00403             \textcolor{keywordflow}{case} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a5cc87519c4cba4d1f16dd98e300487a2}{EXTRAIRE\_DONNEE\_CHARGE}:
+00404                 \textcolor{keywordtype}{int} charge = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a1c9c8df9039fc494293b40011ddf6f5e}{extraireCharge}(payloadFields);
+00405                 rucheSelectionnee.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_afab94785f8af31f6ce436394ab41c9f3}{getMesureRuche}().\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_aaa185bf82c41c889d3e60804da25bd30}{setCharge}(charge);
+00406                 \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a64c55ee927d9cb31265989d0296edc53}{afficherCharge}(charge);
+00407                 \textcolor{keywordflow}{break};
+00408         \}
+00409 
+00410         \textcolor{comment}{// le dernier horodatage reçu}
+00411         String horodatage = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ae14deb90573474bc46817312624ebd20}{extraireHorodatage}(metaData);
+00412         rucheSelectionnee.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_aff1e1caa39a1d012b1714df3902941f8}{setHorodatage}(horodatage);
+00413         \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ae1a488c4774eea0b794257f576ab932d}{afficherHorodatage}(horodatage);
+00414     \}
+00415 
+\Hypertarget{_i_h_m_mobile_8java_source_l00416}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ad49ff3588da89162f21ca8e983a0fb4c}{00416}     \textcolor{keyword}{private} \textcolor{keywordtype}{int} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ad49ff3588da89162f21ca8e983a0fb4c}{extrairePression}(String payloadFields)
+00417     \{
+00418 
+00419         \textcolor{keywordtype}{int} pression = 0; \textcolor{comment}{// ce n'est pas un double !}
+00420 
+00421         \textcolor{keywordflow}{try}
+00422         \{
+00423             JSONObject json = null;
+00424             Iterator<String> it = null;
+00425             json = \textcolor{keyword}{new} JSONObject(payloadFields);
+00426 
+00431             pression = json.getInt(\textcolor{stringliteral}{"pression"});
+00432             Log.d(TAG, \textcolor{stringliteral}{"extrairePression() pression = "} + pression);
+00433         \}
+00434         \textcolor{keywordflow}{catch} (JSONException e)
+00435         \{
+00436             e.printStackTrace();
+00437         \}
+00438 
+00439         \textcolor{keywordflow}{return} pression;
+00440     \}
+00441 
+\Hypertarget{_i_h_m_mobile_8java_source_l00442}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a9a8131f2198266585e602e6fe9d29ef0}{00442}     \textcolor{keyword}{private} \textcolor{keywordtype}{int} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a9a8131f2198266585e602e6fe9d29ef0}{extraireHumiditeExterieure}(String payloadFields)
+00443     \{
+00444         \textcolor{keywordtype}{int} humiditeExterieure = 0; \textcolor{comment}{// ce n'est pas un double !}
+00445 
+00446         \textcolor{keywordflow}{try}
+00447         \{
+00448             JSONObject json = null;
+00449             Iterator<String> it = null;
+00450             json = \textcolor{keyword}{new} JSONObject(payloadFields);
+00451 
+00456             humiditeExterieure = json.getInt(\textcolor{stringliteral}{"humiditeInt"});
+00457             Log.d(TAG, \textcolor{stringliteral}{"extraireHumiditeExterieure() Humidite exterieure = "} + humiditeExterieure);
+00458         \}
+00459         \textcolor{keywordflow}{catch} (JSONException e)
+00460         \{
+00461             e.printStackTrace();
+00462         \}
+00463 
+00464         \textcolor{keywordflow}{return} humiditeExterieure;
+00465     \}
+00466 
+\Hypertarget{_i_h_m_mobile_8java_source_l00467}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_afb44a51a66e904c2b3e5229ab5144f56}{00467}     \textcolor{keyword}{private} \textcolor{keywordtype}{int} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_afb44a51a66e904c2b3e5229ab5144f56}{extraireHumiditeInterieure}(String payloadFields)
+00468     \{
+00469         \textcolor{keywordtype}{int} humiditeInterieure = 0; \textcolor{comment}{// ce n'est pas un double !}
+00470 
+00471         \textcolor{keywordflow}{try}
+00472         \{
+00473             JSONObject json = null;
+00474             Iterator<String> it = null;
+00475             json = \textcolor{keyword}{new} JSONObject(payloadFields);
+00476 
+00481             humiditeInterieure = json.getInt(\textcolor{stringliteral}{"humiditeInt"});
+00482             Log.d(TAG, \textcolor{stringliteral}{"extraireHumiditeInterieure() Humidite interieure = "} + humiditeInterieure);
+00483         \}
+00484         \textcolor{keywordflow}{catch} (JSONException e)
+00485         \{
+00486             e.printStackTrace();
+00487         \}
+00488 
+00489         \textcolor{keywordflow}{return} humiditeInterieure;
+00490     \}
+00491 
+\Hypertarget{_i_h_m_mobile_8java_source_l00492}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a80b9ad15fb6aa3591cf600892b1325b9}{00492}     \textcolor{keyword}{private} \textcolor{keywordtype}{double} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a80b9ad15fb6aa3591cf600892b1325b9}{extraireTemperatureExterieure}(String payloadFields)
+00493     \{
+00494         \textcolor{keywordtype}{double} temperatureExterieure = 0.0;
+00495 
+00496         \textcolor{keywordflow}{try}
+00497         \{
+00498             JSONObject json = null;
+00499             Iterator<String> it = null;
+00500             json = \textcolor{keyword}{new} JSONObject(payloadFields);
+00501 
+00506             temperatureExterieure = json.getDouble(\textcolor{stringliteral}{"temperatureExt"});
+00507             Log.d(TAG, \textcolor{stringliteral}{"extraireTemperatureExterieure() Temperature exterieure = "} + temperatureExterieure)
+      ;
+00508         \}
+00509         \textcolor{keywordflow}{catch} (JSONException e)
+00510         \{
+00511             e.printStackTrace();
+00512         \}
+00513 
+00514         \textcolor{keywordflow}{return} temperatureExterieure;
+00515     \}
+00516 
+\Hypertarget{_i_h_m_mobile_8java_source_l00517}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a714f52f4793f22a08a773b1bf35dd015}{00517}     \textcolor{keyword}{private} \textcolor{keywordtype}{double} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a714f52f4793f22a08a773b1bf35dd015}{extraireTemperatureInterieure}(String payloadFields)
+00518     \{
+00519         \textcolor{keywordtype}{double} temperatureInterieure = 0.0;
+00520 
+00521         \textcolor{keywordflow}{try}
+00522         \{
+00523             JSONObject json = null;
+00524             Iterator<String> it = null;
+00525             json = \textcolor{keyword}{new} JSONObject(payloadFields);
+00526 
+00531             temperatureInterieure = json.getDouble(\textcolor{stringliteral}{"temperatureInt"});
+00532             Log.d(TAG, \textcolor{stringliteral}{"extraireTemperatureInterieure() Temperature interieure = "} + temperatureInterieure)
+      ;
+00533         \}
+00534         \textcolor{keywordflow}{catch} (JSONException e)
+00535         \{
+00536             e.printStackTrace();
+00537         \}
+00538 
+00539         \textcolor{keywordflow}{return} temperatureInterieure;
+00540     \}
+00541 
+\Hypertarget{_i_h_m_mobile_8java_source_l00542}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_abc4571bc8b1400c6d75c0a2594b0abe6}{00542}     \textcolor{keyword}{private} \textcolor{keywordtype}{int} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_abc4571bc8b1400c6d75c0a2594b0abe6}{extrairePort}(String message)
+00543     \{
+00544         \textcolor{keywordtype}{int} port = 0;
+00545 
+00546         \textcolor{keywordflow}{try}
+00547         \{
+00548             JSONObject json = null;
+00549             json = \textcolor{keyword}{new} JSONObject(message);
+00550 
+00551             \textcolor{comment}{// Récupère le port}
+00552             port = json.getInt(\textcolor{stringliteral}{"port"});
+00553             Log.d(TAG, \textcolor{stringliteral}{"extrairePort() port = "} + port);
+00554         \}
+00555         \textcolor{keywordflow}{catch} (JSONException e)
+00556         \{
+00557             e.printStackTrace();
+00558         \}
+00559 
+00560         \textcolor{keywordflow}{return} port;
+00561     \}
+00562 
+\Hypertarget{_i_h_m_mobile_8java_source_l00563}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ac255143b5796de6ee0be9852d2b89396}{00563}     \textcolor{keyword}{private} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ac255143b5796de6ee0be9852d2b89396}{abonnerRuches}()
+00564     \{
+00565         \textcolor{comment}{// Abonner les ruches pour recevoir les données}
+00566         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < rucher.size(); i++)
+00567         \{
+00568             communicationMQTT.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_aa1093a3d4f3479595a36ef2425f3ef70}{souscrireTopic}(rucher.get(i).getDeviceID());
+00569         \}
+00570     \}
+00571 
+\Hypertarget{_i_h_m_mobile_8java_source_l00572}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a7bc9099049f98bcc154c1e8d9f773133}{00572}     \textcolor{keyword}{private} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a7bc9099049f98bcc154c1e8d9f773133}{decoderTopic}(String topic)
+00573     \{
+00574         Log.d(TAG, \textcolor{stringliteral}{"extraireTopic() topic = "} + topic);
+00580         \textcolor{keywordflow}{try}
+00581         \{
+00582             \textcolor{keywordflow}{if} (topic.startsWith(APPLICATION\_ID))
+00583             \{
+00584                 String[] champs = topic.split(\textcolor{stringliteral}{"/"});
+00585 
+00586                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < champs.length; i++)
+00587                 \{
+00588                     Log.d(TAG, \textcolor{stringliteral}{"champs = "} + champs[i]);
+00589                 \}
+00590             \}
+00591         \}
+00592         \textcolor{keywordflow}{catch} (Exception e)
+00593         \{
+00594             e.printStackTrace();
+00595         \}
+00596     \}
+00597 
+\Hypertarget{_i_h_m_mobile_8java_source_l00598}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a2f781039138b814510102847e70917a1}{00598}     \textcolor{keyword}{private} String \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a2f781039138b814510102847e70917a1}{extraireDonneeMessage}(String message)
+00599     \{
+00600         \textcolor{comment}{//Log.d(TAG, "extraireDonneeMessage() message = " + message);}
+00608 \textcolor{comment}{}        String payloadFields = null;
+00609 
+00610         \textcolor{keywordflow}{try}
+00611         \{
+00612             JSONObject json = null;
+00613             Iterator<String> it = null;
+00614 
+00615             json = \textcolor{keyword}{new} JSONObject(message);
+00616 
+00617             it = json.keys();
+00618             \textcolor{keywordflow}{while} (it.hasNext())
+00619             \{
+00620                 String cle = it.next();
+00621 
+00622                 \textcolor{comment}{// Récupère le payload\_fields ?}
+00623                 \textcolor{keywordflow}{if} (cle.equals(\textcolor{stringliteral}{"payload\_fields"}))
+00624                 \{
+00625                     payloadFields = json.getString(cle);
+00626                     Log.d(TAG, \textcolor{stringliteral}{"extraireDonneeMessage() payload\_fields = "} + payloadFields);
+00627                 \}
+00628             \}
+00629         \}
+00630         \textcolor{keywordflow}{catch} (JSONException e)
+00631         \{
+00632             e.printStackTrace();
+00633         \}
+00634 
+00635         \textcolor{keywordflow}{return} payloadFields;
+00636     \}
+00637 
+\Hypertarget{_i_h_m_mobile_8java_source_l00638}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_aabe15decc02b7f56a82f60dac75f8c2f}{00638}     \textcolor{keyword}{private} String \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_aabe15decc02b7f56a82f60dac75f8c2f}{extraireHorodatageMessage}(String message)
+00639     \{
+00640         \textcolor{comment}{//Log.d(TAG, "extraireHorodatageMessage() message = " + message);}
+00648 \textcolor{comment}{}        String metaData = null;
+00649 
+00650         \textcolor{keywordflow}{try}
+00651         \{
+00652             JSONObject json = null;
+00653             Iterator<String> it = null;
+00654 
+00655             json = \textcolor{keyword}{new} JSONObject(message);
+00656 
+00657             it = json.keys();
+00658             \textcolor{keywordflow}{while} (it.hasNext())
+00659             \{
+00660                 String cle = it.next();
+00661 
+00662                 \textcolor{keywordflow}{if} (cle.equals(\textcolor{stringliteral}{"metadata"}))
+00663                 \{
+00664                     metaData = json.getString(cle);
+00665                 \}
+00666             \}
+00667         \}
+00668         \textcolor{keywordflow}{catch} (JSONException e)
+00669         \{
+00670             e.printStackTrace();
+00671         \}
+00672 
+00673         \textcolor{keywordflow}{return} metaData;
+00674     \}
+00675 
+\Hypertarget{_i_h_m_mobile_8java_source_l00676}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ae14deb90573474bc46817312624ebd20}{00676}     \textcolor{keyword}{public} String \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ae14deb90573474bc46817312624ebd20}{extraireHorodatage}(String metaData)
+00677     \{
+00678         String horodatageFormate = \textcolor{stringliteral}{""};
+00679 
+00680         \textcolor{keywordflow}{try}
+00681         \{
+00682             Log.d(TAG, \textcolor{stringliteral}{"extraireHorodatage() metadata = "} + metaData);
+00683             JSONObject json = null;
+00684             json = \textcolor{keyword}{new} JSONObject(metaData);
+00685 
+00690             String time = json.getString(\textcolor{stringliteral}{"time"});
+00691             Log.d(TAG, \textcolor{stringliteral}{"extraireHorodatage() time = "} + time);
+00692             \textcolor{comment}{// time = 2021-04-22T18:46:49.40690864Z}
+00693 
+00694             SimpleDateFormat sdfIn = \textcolor{keyword}{new} SimpleDateFormat(\textcolor{stringliteral}{"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"});
+00695             SimpleDateFormat sdfOut = \textcolor{keyword}{new} SimpleDateFormat(\textcolor{stringliteral}{"dd/MM/yyyy HH:mm"}, Locale.FRENCH); \textcolor{comment}{// choix du
+       format}
+00696             sdfIn.setTimeZone(TimeZone.getTimeZone(\textcolor{stringliteral}{"UTC"}));
+00697             \textcolor{comment}{// Conversion fuseau horaire UTC -> France}
+00698             Date date = null;
+00699             \textcolor{keywordflow}{try}
+00700             \{
+00701                 date = sdfIn.parse(time);
+00702                 sdfOut.setTimeZone(TimeZone.getDefault());
+00703                 horodatageFormate = sdfOut.format(date);
+00704             \}
+00705             \textcolor{keywordflow}{catch} (ParseException e)
+00706             \{
+00707                 e.printStackTrace();
+00708             \}
+00709             Log.d(TAG,\textcolor{stringliteral}{"extraireHorodatage() horodatageFormate = "} + horodatageFormate);
+00710 
+00711         \}
+00712         \textcolor{keywordflow}{catch} (JSONException e)
+00713         \{
+00714             e.printStackTrace();
+00715         \}
+00716 
+00717         \textcolor{keywordflow}{return} horodatageFormate;
+00718     \}
+00719 
+\Hypertarget{_i_h_m_mobile_8java_source_l00720}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ab957cc8fd25c104c48341f7e4141e173}{00720}     \textcolor{keyword}{public} String \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ab957cc8fd25c104c48341f7e4141e173}{extraireDeviceId}(String topic)
+00721     \{
+00722         Log.d(TAG, \textcolor{stringliteral}{"extraireDeviceId() topic = "} + topic);
+00723         String deviceId = \textcolor{stringliteral}{""};
+00724 
+00725         \textcolor{comment}{//Expression régulière : le . est pour n'importe quel caractere sauf retour a la ligne, le + est
+       pour 1 ou plus, et le ? est pour 0 ou 1 mais dans notre cas il precède un + alors il signifie 1 ou + non
+       gourmand}
+00726         Pattern topicPattern = Pattern.compile(\textcolor{stringliteral}{"/(.+?)/(.+?)/"});
+00727         String contenueTopic = topic;
+00728 
+00729         Matcher topicMatcher = topicPattern.matcher( contenueTopic );
+00730         \textcolor{keywordflow}{if} (topicMatcher.find())
+00731         \{
+00732             Log.d( TAG,\textcolor{stringliteral}{" Device ID = "} + topicMatcher.group(2));
+00733             deviceId = topicMatcher.group(2);
+00734         \}
+00735 
+00736         \textcolor{keywordflow}{return} deviceId;
+00737     \}
+00738 
+\Hypertarget{_i_h_m_mobile_8java_source_l00739}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a1c9c8df9039fc494293b40011ddf6f5e}{00739}     \textcolor{keyword}{private} \textcolor{keywordtype}{int} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_a1c9c8df9039fc494293b40011ddf6f5e}{extraireCharge}(String payloadFields)
+00740     \{
+00741         \textcolor{keywordtype}{int} charge = 0;
+00742 
+00743         \textcolor{keywordflow}{try}
+00744         \{
+00745             JSONObject json = null;
+00746             Iterator<String> it = null;
+00747             json = \textcolor{keyword}{new} JSONObject(payloadFields);
+00748 
+00749             charge = json.getInt(\textcolor{stringliteral}{"charge"});
+00750             Log.d(TAG, \textcolor{stringliteral}{"extraireCharge() charge = "} + charge);
+00751         \}
+00752         \textcolor{keywordflow}{catch} (JSONException e)
+00753         \{
+00754             e.printStackTrace();
+00755         \}
+00756 
+00757         \textcolor{keywordflow}{return} charge;
+00758     \}
+00759 
+\Hypertarget{_i_h_m_mobile_8java_source_l00760}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ad702e818ba1d861f26accfd6a0194b86}{00760}     \textcolor{keyword}{private} \textcolor{keywordtype}{double} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_i_h_m_mobile_ad702e818ba1d861f26accfd6a0194b86}{extrairePoids}(String payloadFields)
+00761     \{
+00762         \textcolor{keywordtype}{double} poids = 0.0;
+00763 
+00764         \textcolor{keywordflow}{try}
+00765         \{
+00766             JSONObject json = null;
+00767             Iterator<String> it = null;
+00768             json = \textcolor{keyword}{new} JSONObject(payloadFields);
+00769 
+00770             poids = json.getDouble(\textcolor{stringliteral}{"poids"});
+00771             Log.d(TAG, \textcolor{stringliteral}{"extrairePoids() poids = "} + poids);
+00772         \}
+00773         \textcolor{keywordflow}{catch} (JSONException e)
+00774         \{
+00775             e.printStackTrace();
+00776         \}
+00777 
+00778         \textcolor{keywordflow}{return} poids;
+00779     \}
+00780 \}
+\end{DoxyCode}

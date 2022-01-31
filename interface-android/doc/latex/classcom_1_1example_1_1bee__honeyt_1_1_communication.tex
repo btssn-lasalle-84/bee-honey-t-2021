@@ -1,0 +1,553 @@
+\hypertarget{classcom_1_1example_1_1bee__honeyt_1_1_communication}{}\subsection{Référence de la classe com.\+example.\+bee\+\_\+honeyt.\+Communication}
+\label{classcom_1_1example_1_1bee__honeyt_1_1_communication}\index{com.\+example.\+bee\+\_\+honeyt.\+Communication@{com.\+example.\+bee\+\_\+honeyt.\+Communication}}
+
+
+Déclaration de la classe \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication}{Communication}.  
+
+
+
+
+Graphe de collaboration de com.\+example.\+bee\+\_\+honeyt.\+Communication\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=280pt]{classcom_1_1example_1_1bee__honeyt_1_1_communication__coll__graph}
+\end{center}
+\end{figure}
+\subsubsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a1f92cddc3a6b011683d0ed8d1371227d}{Communication} (Context context, final Handler \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_add1a0705dba503c1c4c7a3168a571b20}{handler})
+\begin{DoxyCompactList}\small\item\em Constructeur de la classe \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication}{Communication}. \end{DoxyCompactList}\item 
+void \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a55454851f5e883b1539bd60fa7f4bfc6}{deconnecter} ()
+\begin{DoxyCompactList}\small\item\em Deconnexion du T\+TN. \end{DoxyCompactList}\item 
+void \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_ae0851e23e515c71cfa06cf635c731c07}{reconnecter} ()
+\begin{DoxyCompactList}\small\item\em Reconnexion au T\+TN. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Fonctions membres publiques statiques}
+\begin{DoxyCompactItemize}
+\item 
+static boolean \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a155e0619c3d504750871a84e637bb808}{est\+Connecte} ()
+\begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}état de connexion au serveur T\+TN. \end{DoxyCompactList}\item 
+static void \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a86faf903d7d230a0105b29e5c1d5f4a2}{set\+Callback} (Mqtt\+Callback\+Extended callback)
+\begin{DoxyCompactList}\small\item\em Installe les fonctions de rappel. \end{DoxyCompactList}\item 
+static boolean \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_aa1093a3d4f3479595a36ef2425f3ef70}{souscrire\+Topic} (String device\+ID)
+\begin{DoxyCompactList}\small\item\em S\textquotesingle{}abonne à un topic (device\+ID = E\+S\+P32 d\textquotesingle{}une ruche dans T\+TN) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Attributs publics statiques}
+\begin{DoxyCompactItemize}
+\item 
+static String \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a8b44e0173d57396d5478f767723c23cc}{client\+Id} = \char`\"{}rucher\char`\"{}
+\begin{DoxyCompactList}\small\item\em Application ID. \end{DoxyCompactList}\item 
+static Mqtt\+Android\+Client \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a86db63a356e4638c1d39c54bbe64f0e1}{mqtt\+Android\+Client}
+\item 
+static final int \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_ad8ad53a30dea0bfcc57bad80cb67ab92}{T\+T\+N\+\_\+\+C\+O\+N\+N\+E\+C\+TE} = 1
+\item 
+static final int \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_ae2fba68d5f0ed6c8bdbaaae68a4e6192}{T\+T\+N\+\_\+\+D\+E\+C\+O\+N\+N\+E\+C\+TE} = 2
+\item 
+static final int \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_aa81848662846946c92ee2b1380669c66}{T\+T\+N\+\_\+\+M\+E\+S\+S\+A\+GE} = 3
+\end{DoxyCompactItemize}
+\subsubsection*{Fonctions membres privées}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_aadc176b28bce357bf655d0feec024013}{connecter} ()
+\begin{DoxyCompactList}\small\item\em Connexion au T\+TN. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Attributs privés}
+\begin{DoxyCompactItemize}
+\item 
+Handler \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_add1a0705dba503c1c4c7a3168a571b20}{handler} = null
+\item 
+String \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_ace9fdd48d010e4c43cb5d32767207cae}{password} = \char`\"{}ttn-\/account-\/v2.\+a4\+G\+Rsjlo\+Pz\+Q\+\_\+4hswG-\/rm\+Wa\+O9\+Mz\+Wk\+Atz\+Cvgg\+We\+O2\+Dv\+L4\char`\"{}
+\begin{DoxyCompactList}\small\item\em mot de passe T\+TN \end{DoxyCompactList}\item 
+String \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a19b957478f8d8a0d8319e8459d85862e}{server\+Uri} = \char`\"{}tcp\+://eu.\+thethings.\+network\+:1883\char`\"{}
+\begin{DoxyCompactList}\small\item\em lien vers T\+TN \end{DoxyCompactList}\item 
+String \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_abfc9c112404b1ddf0fa90587201d5a8f}{username} = \char`\"{}rucher\char`\"{}
+\begin{DoxyCompactList}\small\item\em nom d\textquotesingle{}utilisateur \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Attributs privés statiques}
+\begin{DoxyCompactItemize}
+\item 
+static final String \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a848338dd9654af654c7e681742666785}{T\+AG} = \char`\"{}\+\_\+\+Communication\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Description détaillée}
+Déclaration de la classe \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication}{Communication}. 
+
+Permet la communication M\+Q\+TT avec le serveur The Things Network \begin{DoxyAuthor}{Auteur}
+Thierry Vaira 
+\end{DoxyAuthor}
+\begin{DoxyParagraph}{Last\+Changed\+Revision}
+76 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Last\+Changed\+Date}
+2021-\/04-\/28 12\+:22\+:56 +0200 (mer. 28 avril 2021) 
+\end{DoxyParagraph}
+
+
+Définition à la ligne \hyperlink{_communication_8java_source_l00028}{28} du fichier \hyperlink{_communication_8java_source}{Communication.\+java}.
+
+
+
+\subsubsection{Documentation des constructeurs et destructeur}
+\mbox{\Hypertarget{classcom_1_1example_1_1bee__honeyt_1_1_communication_a1f92cddc3a6b011683d0ed8d1371227d}\label{classcom_1_1example_1_1bee__honeyt_1_1_communication_a1f92cddc3a6b011683d0ed8d1371227d}} 
+\index{com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}!Communication@{Communication}}
+\index{Communication@{Communication}!com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}}
+\paragraph{\texorpdfstring{Communication()}{Communication()}}
+{\footnotesize\ttfamily com.\+example.\+bee\+\_\+honeyt.\+Communication.\+Communication (\begin{DoxyParamCaption}\item[{Context}]{context,  }\item[{final Handler}]{handler }\end{DoxyParamCaption})}
+
+
+
+Constructeur de la classe \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication}{Communication}. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em context} & \\
+\hline
+{\em handler} & \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne \hyperlink{_communication_8java_source_l00063}{63} du fichier \hyperlink{_communication_8java_source}{Communication.\+java}.
+
+
+
+Références \hyperlink{_communication_8java_source_l00131}{com.\+example.\+bee\+\_\+honeyt.\+Communication.\+connecter()}, et \hyperlink{_communication_8java_source_l00039}{com.\+example.\+bee\+\_\+honeyt.\+Communication.\+handler}.
+
+
+\begin{DoxyCode}
+00064     \{
+00065         Log.v(\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a848338dd9654af654c7e681742666785}{TAG}, \textcolor{stringliteral}{"[Communication()] clientId = "} + \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a8b44e0173d57396d5478f767723c23cc}{clientId});
+00066         this.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_add1a0705dba503c1c4c7a3168a571b20}{handler} = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_add1a0705dba503c1c4c7a3168a571b20}{handler};
+00067         \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a86db63a356e4638c1d39c54bbe64f0e1}{mqttAndroidClient} = \textcolor{keyword}{new} MqttAndroidClient(context, 
+      \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a19b957478f8d8a0d8319e8459d85862e}{serverUri}, \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a8b44e0173d57396d5478f767723c23cc}{clientId});
+00068         \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a86db63a356e4638c1d39c54bbe64f0e1}{mqttAndroidClient}.setCallback(\textcolor{keyword}{new} MqttCallbackExtended()
+00069         \{
+00070             @Override
+00071             \textcolor{keyword}{public} \textcolor{keywordtype}{void} connectComplete(\textcolor{keywordtype}{boolean} b, String s)
+00072             \{
+00073                 Log.w(\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a848338dd9654af654c7e681742666785}{TAG}, \textcolor{stringliteral}{"[connectComplete()] serverUri = "} + s + \textcolor{stringliteral}{" connecte = "} + 
+      \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a86db63a356e4638c1d39c54bbe64f0e1}{mqttAndroidClient}.isConnected());
+00074                 Message msg = Message.obtain();
+00075                 Bundle bundle = \textcolor{keyword}{new} Bundle();
+00076                 bundle.putInt(\textcolor{stringliteral}{"etat"}, \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_ad8ad53a30dea0bfcc57bad80cb67ab92}{TTN\_CONNECTE}); \textcolor{comment}{// clé -> valeur ici etat -> TTN\_CONNECTE}
+00077                 msg.setData(bundle);
+00078                 \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_add1a0705dba503c1c4c7a3168a571b20}{handler}.sendMessage(msg);
+00079             \}
+00080 
+00081             @Override
+00082             \textcolor{keyword}{public} \textcolor{keywordtype}{void} connectionLost(Throwable throwable)
+00083             \{
+00084                 Log.w(\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a848338dd9654af654c7e681742666785}{TAG}, \textcolor{stringliteral}{"[connectionLost()]"});
+00085                 Message msg = Message.obtain();
+00086                 Bundle b = \textcolor{keyword}{new} Bundle();
+00087                 b.putInt(\textcolor{stringliteral}{"etat"}, \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_ae2fba68d5f0ed6c8bdbaaae68a4e6192}{TTN\_DECONNECTE});
+00088                 msg.setData(b);
+00089                 \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_add1a0705dba503c1c4c7a3168a571b20}{handler}.sendMessage(msg);
+00090             \}
+00091 
+00092             @Override
+00093             \textcolor{keyword}{public} \textcolor{keywordtype}{void} messageArrived(String topic, MqttMessage mqttMessage) \textcolor{keywordflow}{throws} Exception
+00094             \{
+00095                 Log.w(\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a848338dd9654af654c7e681742666785}{TAG}, \textcolor{stringliteral}{"[messageArrived()] topic = "} + topic + \textcolor{stringliteral}{" message = "} + mqttMessage.toString(
+      ));
+00096                 Message msg = Message.obtain();
+00097                 Bundle b = \textcolor{keyword}{new} Bundle();
+00098                 b.putInt(\textcolor{stringliteral}{"etat"}, \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_aa81848662846946c92ee2b1380669c66}{TTN\_MESSAGE});
+00099                 b.putString(\textcolor{stringliteral}{"topic"}, topic);
+00100                 b.putString(\textcolor{stringliteral}{"message"}, mqttMessage.toString());
+00101                 msg.setData(b);
+00102                 \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_add1a0705dba503c1c4c7a3168a571b20}{handler}.sendMessage(msg);
+00103             \}
+00104 
+00105             @Override
+00106             \textcolor{keyword}{public} \textcolor{keywordtype}{void} deliveryComplete(IMqttDeliveryToken iMqttDeliveryToken)
+00107             \{
+00108                 Log.w(\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a848338dd9654af654c7e681742666785}{TAG}, \textcolor{stringliteral}{"[deliveryComplete()]"});
+00109             \}
+00110         \});
+00111 
+00112         \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_aadc176b28bce357bf655d0feec024013}{connecter}();
+00113     \}
+\end{DoxyCode}
+
+
+\subsubsection{Documentation des fonctions membres}
+\mbox{\Hypertarget{classcom_1_1example_1_1bee__honeyt_1_1_communication_aadc176b28bce357bf655d0feec024013}\label{classcom_1_1example_1_1bee__honeyt_1_1_communication_aadc176b28bce357bf655d0feec024013}} 
+\index{com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}!connecter@{connecter}}
+\index{connecter@{connecter}!com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}}
+\paragraph{\texorpdfstring{connecter()}{connecter()}}
+{\footnotesize\ttfamily com.\+example.\+bee\+\_\+honeyt.\+Communication.\+connecter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Connexion au T\+TN. 
+
+
+
+Définition à la ligne \hyperlink{_communication_8java_source_l00131}{131} du fichier \hyperlink{_communication_8java_source}{Communication.\+java}.
+
+
+
+Référencé par \hyperlink{_communication_8java_source_l00063}{com.\+example.\+bee\+\_\+honeyt.\+Communication.\+Communication()}, et \hyperlink{_communication_8java_source_l00174}{com.\+example.\+bee\+\_\+honeyt.\+Communication.\+reconnecter()}.
+
+
+\begin{DoxyCode}
+00132     \{
+00133         MqttConnectOptions mqttConnectOptions = \textcolor{keyword}{new} MqttConnectOptions();
+00134         mqttConnectOptions.setAutomaticReconnect(\textcolor{keyword}{true});
+00135         mqttConnectOptions.setCleanSession(\textcolor{keyword}{false});
+00136         mqttConnectOptions.setUserName(\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_abfc9c112404b1ddf0fa90587201d5a8f}{username});
+00137         mqttConnectOptions.setPassword(\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_ace9fdd48d010e4c43cb5d32767207cae}{password}.toCharArray());
+00138 
+00139         \textcolor{keywordflow}{try}
+00140         \{
+00141             Log.d(\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a848338dd9654af654c7e681742666785}{TAG}, \textcolor{stringliteral}{"[connecter()] serverUri = "} + \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a19b957478f8d8a0d8319e8459d85862e}{serverUri} + \textcolor{stringliteral}{" clientId = "} + 
+      \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a8b44e0173d57396d5478f767723c23cc}{clientId});
+00142             \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a86db63a356e4638c1d39c54bbe64f0e1}{mqttAndroidClient}.connect(mqttConnectOptions, null, \textcolor{keyword}{new} IMqttActionListener()
+00143             \{
+00144                 @Override
+00145                 \textcolor{keyword}{public} \textcolor{keywordtype}{void} onSuccess(IMqttToken asyncActionToken)
+00146                 \{
+00147                     DisconnectedBufferOptions disconnectedBufferOptions = \textcolor{keyword}{new} DisconnectedBufferOptions();
+00148                     disconnectedBufferOptions.setBufferEnabled(\textcolor{keyword}{true});
+00149                     disconnectedBufferOptions.setBufferSize(100);
+00150                     disconnectedBufferOptions.setPersistBuffer(\textcolor{keyword}{false});
+00151                     disconnectedBufferOptions.setDeleteOldestMessages(\textcolor{keyword}{false});
+00152                     \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a86db63a356e4638c1d39c54bbe64f0e1}{mqttAndroidClient}.setBufferOpts(disconnectedBufferOptions);
+00153                     Log.d(\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a848338dd9654af654c7e681742666785}{TAG}, \textcolor{stringliteral}{"[onSuccess()] serverUri = "} + \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a19b957478f8d8a0d8319e8459d85862e}{serverUri} + \textcolor{stringliteral}{" clientId = "} + 
+      \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a8b44e0173d57396d5478f767723c23cc}{clientId});
+00154                 \}
+00155 
+00156                 @Override
+00157                 \textcolor{keyword}{public} \textcolor{keywordtype}{void} onFailure(IMqttToken asyncActionToken, Throwable exception)
+00158                 \{
+00159                     Log.d(\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a848338dd9654af654c7e681742666785}{TAG}, \textcolor{stringliteral}{"[onFailure()] serverUri = "} + \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a19b957478f8d8a0d8319e8459d85862e}{serverUri} + \textcolor{stringliteral}{" clientId = "} + 
+      \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a8b44e0173d57396d5478f767723c23cc}{clientId} + \textcolor{stringliteral}{" exception = "} + exception.toString());
+00160                 \}
+00161             \});
+00162         \}
+00163         \textcolor{keywordflow}{catch} (MqttException e)
+00164         \{
+00165             e.printStackTrace();
+00166         \}
+00167     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1example_1_1bee__honeyt_1_1_communication_a55454851f5e883b1539bd60fa7f4bfc6}\label{classcom_1_1example_1_1bee__honeyt_1_1_communication_a55454851f5e883b1539bd60fa7f4bfc6}} 
+\index{com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}!deconnecter@{deconnecter}}
+\index{deconnecter@{deconnecter}!com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}}
+\paragraph{\texorpdfstring{deconnecter()}{deconnecter()}}
+{\footnotesize\ttfamily com.\+example.\+bee\+\_\+honeyt.\+Communication.\+deconnecter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Deconnexion du T\+TN. 
+
+
+
+Définition à la ligne \hyperlink{_communication_8java_source_l00187}{187} du fichier \hyperlink{_communication_8java_source}{Communication.\+java}.
+
+
+
+Référencé par \hyperlink{_communication_8java_source_l00174}{com.\+example.\+bee\+\_\+honeyt.\+Communication.\+reconnecter()}.
+
+
+\begin{DoxyCode}
+00188     \{
+00189         Log.d(\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a848338dd9654af654c7e681742666785}{TAG}, \textcolor{stringliteral}{"[deconnecter()] serverUri = "} + \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a19b957478f8d8a0d8319e8459d85862e}{serverUri} + \textcolor{stringliteral}{" clientId = "} + 
+      \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a8b44e0173d57396d5478f767723c23cc}{clientId});
+00190         \textcolor{keywordflow}{try}
+00191         \{
+00192             IMqttToken disconToken = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a86db63a356e4638c1d39c54bbe64f0e1}{mqttAndroidClient}.disconnect();
+00193             disconToken.setActionCallback(\textcolor{keyword}{new} IMqttActionListener()
+00194             \{
+00195                 @Override
+00196                 \textcolor{keyword}{public} \textcolor{keywordtype}{void} onSuccess(IMqttToken asyncActionToken)
+00197                 \{
+00198                     Log.d(\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a848338dd9654af654c7e681742666785}{TAG}, \textcolor{stringliteral}{"[onSuccess()] serverUri = "} + \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a19b957478f8d8a0d8319e8459d85862e}{serverUri} + \textcolor{stringliteral}{" clientId = "} + 
+      \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a8b44e0173d57396d5478f767723c23cc}{clientId});
+00199                 \}
+00200 
+00201                 @Override
+00202                 \textcolor{keyword}{public} \textcolor{keywordtype}{void} onFailure(IMqttToken asyncActionToken, Throwable exception)
+00203                 \{
+00204                     Log.d(\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a848338dd9654af654c7e681742666785}{TAG}, \textcolor{stringliteral}{"[onFailure()] serverUri = "} + \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a19b957478f8d8a0d8319e8459d85862e}{serverUri} + \textcolor{stringliteral}{" clientId = "} + 
+      \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a8b44e0173d57396d5478f767723c23cc}{clientId} + \textcolor{stringliteral}{" exception = "} + exception.toString());
+00205                 \}
+00206             \});
+00207         \}
+00208         \textcolor{keywordflow}{catch} (MqttException e)
+00209         \{
+00210             e.printStackTrace();
+00211         \}
+00212     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1example_1_1bee__honeyt_1_1_communication_a155e0619c3d504750871a84e637bb808}\label{classcom_1_1example_1_1bee__honeyt_1_1_communication_a155e0619c3d504750871a84e637bb808}} 
+\index{com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}!est\+Connecte@{est\+Connecte}}
+\index{est\+Connecte@{est\+Connecte}!com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}}
+\paragraph{\texorpdfstring{est\+Connecte()}{estConnecte()}}
+{\footnotesize\ttfamily com.\+example.\+bee\+\_\+honeyt.\+Communication.\+est\+Connecte (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Retourne l\textquotesingle{}état de connexion au serveur T\+TN. 
+
+
+
+Définition à la ligne \hyperlink{_communication_8java_source_l00219}{219} du fichier \hyperlink{_communication_8java_source}{Communication.\+java}.
+
+
+
+Référencé par \hyperlink{_communication_8java_source_l00174}{com.\+example.\+bee\+\_\+honeyt.\+Communication.\+reconnecter()}.
+
+
+\begin{DoxyCode}
+00220     \{
+00221         Log.w(\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a848338dd9654af654c7e681742666785}{TAG}, \textcolor{stringliteral}{"[estConnecte()] "} + \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a86db63a356e4638c1d39c54bbe64f0e1}{mqttAndroidClient}.isConnected());
+00222 
+00223         \textcolor{keywordflow}{return} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a86db63a356e4638c1d39c54bbe64f0e1}{mqttAndroidClient}.isConnected();
+00224     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1example_1_1bee__honeyt_1_1_communication_ae0851e23e515c71cfa06cf635c731c07}\label{classcom_1_1example_1_1bee__honeyt_1_1_communication_ae0851e23e515c71cfa06cf635c731c07}} 
+\index{com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}!reconnecter@{reconnecter}}
+\index{reconnecter@{reconnecter}!com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}}
+\paragraph{\texorpdfstring{reconnecter()}{reconnecter()}}
+{\footnotesize\ttfamily com.\+example.\+bee\+\_\+honeyt.\+Communication.\+reconnecter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reconnexion au T\+TN. 
+
+
+
+Définition à la ligne \hyperlink{_communication_8java_source_l00174}{174} du fichier \hyperlink{_communication_8java_source}{Communication.\+java}.
+
+
+
+Références \hyperlink{_communication_8java_source_l00131}{com.\+example.\+bee\+\_\+honeyt.\+Communication.\+connecter()}, \hyperlink{_communication_8java_source_l00187}{com.\+example.\+bee\+\_\+honeyt.\+Communication.\+deconnecter()}, et \hyperlink{_communication_8java_source_l00219}{com.\+example.\+bee\+\_\+honeyt.\+Communication.\+est\+Connecte()}.
+
+
+\begin{DoxyCode}
+00175     \{
+00176         Log.w(\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a848338dd9654af654c7e681742666785}{TAG}, \textcolor{stringliteral}{"[reconnecter()]"});
+00177         \textcolor{keywordflow}{if} (\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a155e0619c3d504750871a84e637bb808}{estConnecte}())
+00178             \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a55454851f5e883b1539bd60fa7f4bfc6}{deconnecter}();
+00179         \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_aadc176b28bce357bf655d0feec024013}{connecter}();
+00180     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1example_1_1bee__honeyt_1_1_communication_a86faf903d7d230a0105b29e5c1d5f4a2}\label{classcom_1_1example_1_1bee__honeyt_1_1_communication_a86faf903d7d230a0105b29e5c1d5f4a2}} 
+\index{com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}!set\+Callback@{set\+Callback}}
+\index{set\+Callback@{set\+Callback}!com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}}
+\paragraph{\texorpdfstring{set\+Callback()}{setCallback()}}
+{\footnotesize\ttfamily com.\+example.\+bee\+\_\+honeyt.\+Communication.\+set\+Callback (\begin{DoxyParamCaption}\item[{Mqtt\+Callback\+Extended}]{callback }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Installe les fonctions de rappel. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em callback} & le retour \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne \hyperlink{_communication_8java_source_l00121}{121} du fichier \hyperlink{_communication_8java_source}{Communication.\+java}.
+
+
+\begin{DoxyCode}
+00122     \{
+00123         \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a86db63a356e4638c1d39c54bbe64f0e1}{mqttAndroidClient}.setCallback(callback);
+00124     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1example_1_1bee__honeyt_1_1_communication_aa1093a3d4f3479595a36ef2425f3ef70}\label{classcom_1_1example_1_1bee__honeyt_1_1_communication_aa1093a3d4f3479595a36ef2425f3ef70}} 
+\index{com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}!souscrire\+Topic@{souscrire\+Topic}}
+\index{souscrire\+Topic@{souscrire\+Topic}!com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}}
+\paragraph{\texorpdfstring{souscrire\+Topic()}{souscrireTopic()}}
+{\footnotesize\ttfamily com.\+example.\+bee\+\_\+honeyt.\+Communication.\+souscrire\+Topic (\begin{DoxyParamCaption}\item[{String}]{topic }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+S\textquotesingle{}abonne à un topic (device\+ID = E\+S\+P32 d\textquotesingle{}une ruche dans T\+TN) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em device\+ID} & le device\+ID dans T\+TN \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne \hyperlink{_communication_8java_source_l00232}{232} du fichier \hyperlink{_communication_8java_source}{Communication.\+java}.
+
+
+
+Référencé par \hyperlink{_i_h_m_mobile_8java_source_l00563}{com.\+example.\+bee\+\_\+honeyt.\+I\+H\+M\+Mobile.\+abonner\+Ruches()}.
+
+
+\begin{DoxyCode}
+00233     \{
+00234         \textcolor{comment}{// Vérifications}
+00235         \textcolor{keywordflow}{if}(\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a86db63a356e4638c1d39c54bbe64f0e1}{mqttAndroidClient} == null && !\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a86db63a356e4638c1d39c54bbe64f0e1}{mqttAndroidClient}.isConnected())
+00236         \{
+00237             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00238         \}
+00239 
+00240         \textcolor{keyword}{final} String topicTTN = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a8b44e0173d57396d5478f767723c23cc}{clientId} + \textcolor{stringliteral}{"/devices/"} + deviceID + \textcolor{stringliteral}{"/up"};
+00241         Log.w(\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a848338dd9654af654c7e681742666785}{TAG}, \textcolor{stringliteral}{"[souscrireTopic()] topic = "} + topicTTN);
+00242         \textcolor{keywordflow}{try}
+00243         \{
+00244             \textcolor{keyword}{final} \textcolor{keywordtype}{boolean}[] retour = \{\textcolor{keyword}{false}\};
+00245             \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a86db63a356e4638c1d39c54bbe64f0e1}{mqttAndroidClient}.subscribe(topicTTN, 0, null, \textcolor{keyword}{new} IMqttActionListener()
+00246             \{
+00247                 @Override
+00248                 \textcolor{keyword}{public} \textcolor{keywordtype}{void} onSuccess(IMqttToken asyncActionToken)
+00249                 \{
+00250                     Log.w(\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a848338dd9654af654c7e681742666785}{TAG}, \textcolor{stringliteral}{"[onSuccess()] topic = "} + topicTTN);
+00251                     retour[0] = \textcolor{keyword}{true};
+00252                 \}
+00253 
+00254                 @Override
+00255                 \textcolor{keyword}{public} \textcolor{keywordtype}{void} onFailure(IMqttToken asyncActionToken, Throwable exception)
+00256                 \{
+00257                     Log.w(\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a848338dd9654af654c7e681742666785}{TAG}, \textcolor{stringliteral}{"[onFailure()] topic = "} + topicTTN);
+00258                     retour[0] = \textcolor{keyword}{false};
+00259                 \}
+00260             \});
+00261             \textcolor{keywordflow}{return} retour[0];
+00262         \}
+00263         \textcolor{keywordflow}{catch} (MqttException e)
+00264         \{
+00265             Log.w(\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_communication_a848338dd9654af654c7e681742666785}{TAG}, \textcolor{stringliteral}{"Erreur topic = "} + topicTTN);
+00266             e.printStackTrace();
+00267             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00268         \}
+00269     \}
+\end{DoxyCode}
+
+
+\subsubsection{Documentation des données membres}
+\mbox{\Hypertarget{classcom_1_1example_1_1bee__honeyt_1_1_communication_a8b44e0173d57396d5478f767723c23cc}\label{classcom_1_1example_1_1bee__honeyt_1_1_communication_a8b44e0173d57396d5478f767723c23cc}} 
+\index{com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}!client\+Id@{client\+Id}}
+\index{client\+Id@{client\+Id}!com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}}
+\paragraph{\texorpdfstring{client\+Id}{clientId}}
+{\footnotesize\ttfamily String com.\+example.\+bee\+\_\+honeyt.\+Communication.\+client\+Id = \char`\"{}rucher\char`\"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Application ID. 
+
+\begin{DoxyRefDesc}{A faire}
+\item[\hyperlink{todo__todo000001}{A faire}]Prévoir une solution pour configurer/stocker les paramètres de connexion T\+TN \end{DoxyRefDesc}
+
+
+Définition à la ligne \hyperlink{_communication_8java_source_l00052}{52} du fichier \hyperlink{_communication_8java_source}{Communication.\+java}.
+
+\mbox{\Hypertarget{classcom_1_1example_1_1bee__honeyt_1_1_communication_add1a0705dba503c1c4c7a3168a571b20}\label{classcom_1_1example_1_1bee__honeyt_1_1_communication_add1a0705dba503c1c4c7a3168a571b20}} 
+\index{com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}!handler@{handler}}
+\index{handler@{handler}!com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}}
+\paragraph{\texorpdfstring{handler}{handler}}
+{\footnotesize\ttfamily Handler com.\+example.\+bee\+\_\+honeyt.\+Communication.\+handler = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Définition à la ligne \hyperlink{_communication_8java_source_l00039}{39} du fichier \hyperlink{_communication_8java_source}{Communication.\+java}.
+
+
+
+Référencé par \hyperlink{_communication_8java_source_l00063}{com.\+example.\+bee\+\_\+honeyt.\+Communication.\+Communication()}.
+
+\mbox{\Hypertarget{classcom_1_1example_1_1bee__honeyt_1_1_communication_a86db63a356e4638c1d39c54bbe64f0e1}\label{classcom_1_1example_1_1bee__honeyt_1_1_communication_a86db63a356e4638c1d39c54bbe64f0e1}} 
+\index{com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}!mqtt\+Android\+Client@{mqtt\+Android\+Client}}
+\index{mqtt\+Android\+Client@{mqtt\+Android\+Client}!com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}}
+\paragraph{\texorpdfstring{mqtt\+Android\+Client}{mqttAndroidClient}}
+{\footnotesize\ttfamily Mqtt\+Android\+Client com.\+example.\+bee\+\_\+honeyt.\+Communication.\+mqtt\+Android\+Client\hspace{0.3cm}{\ttfamily [static]}}
+
+Attributs 
+
+Définition à la ligne \hyperlink{_communication_8java_source_l00038}{38} du fichier \hyperlink{_communication_8java_source}{Communication.\+java}.
+
+\mbox{\Hypertarget{classcom_1_1example_1_1bee__honeyt_1_1_communication_ace9fdd48d010e4c43cb5d32767207cae}\label{classcom_1_1example_1_1bee__honeyt_1_1_communication_ace9fdd48d010e4c43cb5d32767207cae}} 
+\index{com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}!password@{password}}
+\index{password@{password}!com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}}
+\paragraph{\texorpdfstring{password}{password}}
+{\footnotesize\ttfamily String com.\+example.\+bee\+\_\+honeyt.\+Communication.\+password = \char`\"{}ttn-\/account-\/v2.\+a4\+G\+Rsjlo\+Pz\+Q\+\_\+4hswG-\/rm\+Wa\+O9\+Mz\+Wk\+Atz\+Cvgg\+We\+O2\+Dv\+L4\char`\"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+mot de passe T\+TN 
+
+
+
+Définition à la ligne \hyperlink{_communication_8java_source_l00054}{54} du fichier \hyperlink{_communication_8java_source}{Communication.\+java}.
+
+\mbox{\Hypertarget{classcom_1_1example_1_1bee__honeyt_1_1_communication_a19b957478f8d8a0d8319e8459d85862e}\label{classcom_1_1example_1_1bee__honeyt_1_1_communication_a19b957478f8d8a0d8319e8459d85862e}} 
+\index{com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}!server\+Uri@{server\+Uri}}
+\index{server\+Uri@{server\+Uri}!com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}}
+\paragraph{\texorpdfstring{server\+Uri}{serverUri}}
+{\footnotesize\ttfamily String com.\+example.\+bee\+\_\+honeyt.\+Communication.\+server\+Uri = \char`\"{}tcp\+://eu.\+thethings.\+network\+:1883\char`\"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+lien vers T\+TN 
+
+
+
+Définition à la ligne \hyperlink{_communication_8java_source_l00048}{48} du fichier \hyperlink{_communication_8java_source}{Communication.\+java}.
+
+\mbox{\Hypertarget{classcom_1_1example_1_1bee__honeyt_1_1_communication_a848338dd9654af654c7e681742666785}\label{classcom_1_1example_1_1bee__honeyt_1_1_communication_a848338dd9654af654c7e681742666785}} 
+\index{com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}!T\+AG@{T\+AG}}
+\index{T\+AG@{T\+AG}!com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}}
+\paragraph{\texorpdfstring{T\+AG}{TAG}}
+{\footnotesize\ttfamily final String com.\+example.\+bee\+\_\+honeyt.\+Communication.\+T\+AG = \char`\"{}\+\_\+\+Communication\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Constantes 
+
+Définition à la ligne \hyperlink{_communication_8java_source_l00033}{33} du fichier \hyperlink{_communication_8java_source}{Communication.\+java}.
+
+\mbox{\Hypertarget{classcom_1_1example_1_1bee__honeyt_1_1_communication_ad8ad53a30dea0bfcc57bad80cb67ab92}\label{classcom_1_1example_1_1bee__honeyt_1_1_communication_ad8ad53a30dea0bfcc57bad80cb67ab92}} 
+\index{com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}!T\+T\+N\+\_\+\+C\+O\+N\+N\+E\+C\+TE@{T\+T\+N\+\_\+\+C\+O\+N\+N\+E\+C\+TE}}
+\index{T\+T\+N\+\_\+\+C\+O\+N\+N\+E\+C\+TE@{T\+T\+N\+\_\+\+C\+O\+N\+N\+E\+C\+TE}!com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}}
+\paragraph{\texorpdfstring{T\+T\+N\+\_\+\+C\+O\+N\+N\+E\+C\+TE}{TTN\_CONNECTE}}
+{\footnotesize\ttfamily final int com.\+example.\+bee\+\_\+honeyt.\+Communication.\+T\+T\+N\+\_\+\+C\+O\+N\+N\+E\+C\+TE = 1\hspace{0.3cm}{\ttfamily [static]}}
+
+Constantes pour le Handler 
+
+Définition à la ligne \hyperlink{_communication_8java_source_l00044}{44} du fichier \hyperlink{_communication_8java_source}{Communication.\+java}.
+
+\mbox{\Hypertarget{classcom_1_1example_1_1bee__honeyt_1_1_communication_ae2fba68d5f0ed6c8bdbaaae68a4e6192}\label{classcom_1_1example_1_1bee__honeyt_1_1_communication_ae2fba68d5f0ed6c8bdbaaae68a4e6192}} 
+\index{com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}!T\+T\+N\+\_\+\+D\+E\+C\+O\+N\+N\+E\+C\+TE@{T\+T\+N\+\_\+\+D\+E\+C\+O\+N\+N\+E\+C\+TE}}
+\index{T\+T\+N\+\_\+\+D\+E\+C\+O\+N\+N\+E\+C\+TE@{T\+T\+N\+\_\+\+D\+E\+C\+O\+N\+N\+E\+C\+TE}!com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}}
+\paragraph{\texorpdfstring{T\+T\+N\+\_\+\+D\+E\+C\+O\+N\+N\+E\+C\+TE}{TTN\_DECONNECTE}}
+{\footnotesize\ttfamily final int com.\+example.\+bee\+\_\+honeyt.\+Communication.\+T\+T\+N\+\_\+\+D\+E\+C\+O\+N\+N\+E\+C\+TE = 2\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Définition à la ligne \hyperlink{_communication_8java_source_l00045}{45} du fichier \hyperlink{_communication_8java_source}{Communication.\+java}.
+
+\mbox{\Hypertarget{classcom_1_1example_1_1bee__honeyt_1_1_communication_aa81848662846946c92ee2b1380669c66}\label{classcom_1_1example_1_1bee__honeyt_1_1_communication_aa81848662846946c92ee2b1380669c66}} 
+\index{com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}!T\+T\+N\+\_\+\+M\+E\+S\+S\+A\+GE@{T\+T\+N\+\_\+\+M\+E\+S\+S\+A\+GE}}
+\index{T\+T\+N\+\_\+\+M\+E\+S\+S\+A\+GE@{T\+T\+N\+\_\+\+M\+E\+S\+S\+A\+GE}!com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}}
+\paragraph{\texorpdfstring{T\+T\+N\+\_\+\+M\+E\+S\+S\+A\+GE}{TTN\_MESSAGE}}
+{\footnotesize\ttfamily final int com.\+example.\+bee\+\_\+honeyt.\+Communication.\+T\+T\+N\+\_\+\+M\+E\+S\+S\+A\+GE = 3\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Définition à la ligne \hyperlink{_communication_8java_source_l00046}{46} du fichier \hyperlink{_communication_8java_source}{Communication.\+java}.
+
+\mbox{\Hypertarget{classcom_1_1example_1_1bee__honeyt_1_1_communication_abfc9c112404b1ddf0fa90587201d5a8f}\label{classcom_1_1example_1_1bee__honeyt_1_1_communication_abfc9c112404b1ddf0fa90587201d5a8f}} 
+\index{com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}!username@{username}}
+\index{username@{username}!com\+::example\+::bee\+\_\+honeyt\+::\+Communication@{com\+::example\+::bee\+\_\+honeyt\+::\+Communication}}
+\paragraph{\texorpdfstring{username}{username}}
+{\footnotesize\ttfamily String com.\+example.\+bee\+\_\+honeyt.\+Communication.\+username = \char`\"{}rucher\char`\"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+nom d\textquotesingle{}utilisateur 
+
+
+
+Définition à la ligne \hyperlink{_communication_8java_source_l00053}{53} du fichier \hyperlink{_communication_8java_source}{Communication.\+java}.
+
+
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_communication_8java}{Communication.\+java}\end{DoxyCompactItemize}

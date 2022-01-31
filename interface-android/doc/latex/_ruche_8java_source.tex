@@ -1,0 +1,244 @@
+\hypertarget{_ruche_8java_source}{}\subsection{Ruche.\+java}
+\label{_ruche_8java_source}\index{Ruche.\+java@{Ruche.\+java}}
+
+\begin{DoxyCode}
+00001 \textcolor{keyword}{package }com.example.bee\_honeyt;
+00002 
+\Hypertarget{_ruche_8java_source_l00015}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche}{00015} \textcolor{keyword}{public} \textcolor{keyword}{class }\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche}{Ruche}
+00016 \{
+00017     \textcolor{comment}{// Attributs}
+\Hypertarget{_ruche_8java_source_l00018}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ac72094a8a08cf8f485be1456863bc4bd}{00018}     \textcolor{keyword}{private} String \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ac72094a8a08cf8f485be1456863bc4bd}{nom} = \textcolor{stringliteral}{""}; 
+\Hypertarget{_ruche_8java_source_l00019}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a7126c2ff9e0b3b5365e042c5309ad775}{00019}     \textcolor{keyword}{private} String \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a7126c2ff9e0b3b5365e042c5309ad775}{deviceID}; 
+\Hypertarget{_ruche_8java_source_l00020}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a93b3665d844cbba761ebf9a19a1d7d34}{00020}     \textcolor{keyword}{private} String \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a93b3665d844cbba761ebf9a19a1d7d34}{horodatage};
+\Hypertarget{_ruche_8java_source_l00021}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a8b1b18ca9364533f66214ed9daea875e}{00021}     \textcolor{keyword}{private} String \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a8b1b18ca9364533f66214ed9daea875e}{connexion};
+\Hypertarget{_ruche_8java_source_l00022}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a91168fb786c93a5233138f67b6a121ad}{00022}     \textcolor{keyword}{private} String \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a91168fb786c93a5233138f67b6a121ad}{deconnexion};
+00023     \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche}{MesureRuche} mesureRuche = \textcolor{keyword}{new} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche}{MesureRuche}();
+00024     \textcolor{comment}{// Les seuils}
+\Hypertarget{_ruche_8java_source_l00025}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a143b0b293ab3aaa67a86550efeb56f07}{00025}     \textcolor{keyword}{private} \textcolor{keywordtype}{double} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a143b0b293ab3aaa67a86550efeb56f07}{temperatureInterieurMin} = 0.0;
+\Hypertarget{_ruche_8java_source_l00026}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_af2d8d214dabc9af08329aa3173047245}{00026}     \textcolor{keyword}{private} \textcolor{keywordtype}{double} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_af2d8d214dabc9af08329aa3173047245}{temperatureInterieurMax} = 0.0;
+\Hypertarget{_ruche_8java_source_l00027}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a6e88eae7cc58b7c7ca3846d789fe1c2b}{00027}     \textcolor{keyword}{private} \textcolor{keywordtype}{double} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a6e88eae7cc58b7c7ca3846d789fe1c2b}{temperatureExterieurMin} = 0.0;
+\Hypertarget{_ruche_8java_source_l00028}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_afd45ecd796457b633615488195153114}{00028}     \textcolor{keyword}{private} \textcolor{keywordtype}{double} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_afd45ecd796457b633615488195153114}{temperatureExterieurMax} = 0.0;
+\Hypertarget{_ruche_8java_source_l00029}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ab8234d1bae28a10622b331d3b773445d}{00029}     \textcolor{keyword}{private} \textcolor{keywordtype}{double} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ab8234d1bae28a10622b331d3b773445d}{humiditeInterieurMin} = 0.0;
+\Hypertarget{_ruche_8java_source_l00030}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a1483266a1f1ba7d83e0f69bef8e26231}{00030}     \textcolor{keyword}{private} \textcolor{keywordtype}{double} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a1483266a1f1ba7d83e0f69bef8e26231}{humiditeInterieurMax} = 0.0;
+\Hypertarget{_ruche_8java_source_l00031}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ad58b8815412827add256f6c6e11d3043}{00031}     \textcolor{keyword}{private} \textcolor{keywordtype}{double} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ad58b8815412827add256f6c6e11d3043}{humiditeExterieurMin} = 0.0;
+\Hypertarget{_ruche_8java_source_l00032}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a76e636b4d5e0a18b187905e0d6d73a71}{00032}     \textcolor{keyword}{private} \textcolor{keywordtype}{double} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a76e636b4d5e0a18b187905e0d6d73a71}{humiditeExterieurMax} = 0.0;
+\Hypertarget{_ruche_8java_source_l00033}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a3408f099f2fab8700353e6e266fe8221}{00033}     \textcolor{keyword}{private} \textcolor{keywordtype}{double} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a3408f099f2fab8700353e6e266fe8221}{poidsMin} = 0.0;
+\Hypertarget{_ruche_8java_source_l00034}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a5901bf432f6d2de0e5facb8952277cbc}{00034}     \textcolor{keyword}{private} \textcolor{keywordtype}{double} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a5901bf432f6d2de0e5facb8952277cbc}{poidsMax} = 0.0;
+\Hypertarget{_ruche_8java_source_l00035}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_aaeb7392ff8f3f26203e23f1dd57ae89f}{00035}     \textcolor{keyword}{private} \textcolor{keywordtype}{double} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_aaeb7392ff8f3f26203e23f1dd57ae89f}{longitude} = 0.0;
+\Hypertarget{_ruche_8java_source_l00036}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a6a75dfabd9812334d502756f91fa4aa9}{00036}     \textcolor{keyword}{private} \textcolor{keywordtype}{double} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a6a75dfabd9812334d502756f91fa4aa9}{latitude} = 0.0;
+00037 
+\Hypertarget{_ruche_8java_source_l00038}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_aab68c5c3479f1def1b57a4d8b9cca9cd}{00038}     \textcolor{keyword}{public} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_aab68c5c3479f1def1b57a4d8b9cca9cd}{Ruche}(String nom, String deviceID)
+00039     \{
+00040         this.nom = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ac72094a8a08cf8f485be1456863bc4bd}{nom};
+00041         this.deviceID = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a7126c2ff9e0b3b5365e042c5309ad775}{deviceID};
+00042     \}
+00043 
+\Hypertarget{_ruche_8java_source_l00044}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ae3747158da62331b68bf99f5b5bab2a6}{00044}     \textcolor{keyword}{public} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ae3747158da62331b68bf99f5b5bab2a6}{Ruche}(String nom, String deviceID, String horodatage, String connexion,String deconnexion, \textcolor{keywordtype}{
+      double} temperatureInterieurMin, \textcolor{keywordtype}{double} temperatureInterieurMax, \textcolor{keywordtype}{double} temperatureExterieurMin,
+00045                  \textcolor{keywordtype}{double} temperatureExterieurMax, \textcolor{keywordtype}{double} humiditeInterieurMin, \textcolor{keywordtype}{double} humiditeInterieurMax,
+00046                  \textcolor{keywordtype}{double} humiditeExterieurMin, \textcolor{keywordtype}{double} humiditeExterieurMax, \textcolor{keywordtype}{double} poidsMin, \textcolor{keywordtype}{double} poidsMax
+      ,
+00047                  \textcolor{keywordtype}{double} longitude, \textcolor{keywordtype}{double} latitude)
+00048     \{
+00049         this.nom = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ac72094a8a08cf8f485be1456863bc4bd}{nom};
+00050         this.deviceID = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a7126c2ff9e0b3b5365e042c5309ad775}{deviceID};
+00051         this.horodatage = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a93b3665d844cbba761ebf9a19a1d7d34}{horodatage};
+00052         this.connexion = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a8b1b18ca9364533f66214ed9daea875e}{connexion};
+00053         this.deconnexion = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a91168fb786c93a5233138f67b6a121ad}{deconnexion};
+00054         this.temperatureInterieurMin = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a143b0b293ab3aaa67a86550efeb56f07}{temperatureInterieurMin};
+00055         this.temperatureInterieurMax = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_af2d8d214dabc9af08329aa3173047245}{temperatureInterieurMax};
+00056         this.temperatureExterieurMin = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a6e88eae7cc58b7c7ca3846d789fe1c2b}{temperatureExterieurMin};
+00057         this.temperatureExterieurMax = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_afd45ecd796457b633615488195153114}{temperatureExterieurMax};
+00058         this.humiditeInterieurMin = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ab8234d1bae28a10622b331d3b773445d}{humiditeInterieurMin};
+00059         this.humiditeInterieurMax = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a1483266a1f1ba7d83e0f69bef8e26231}{humiditeInterieurMax};
+00060         this.humiditeExterieurMin = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ad58b8815412827add256f6c6e11d3043}{humiditeExterieurMin};
+00061         this.humiditeExterieurMax = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a76e636b4d5e0a18b187905e0d6d73a71}{humiditeExterieurMax};
+00062         this.poidsMin = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a3408f099f2fab8700353e6e266fe8221}{poidsMin};
+00063         this.poidsMax = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a5901bf432f6d2de0e5facb8952277cbc}{poidsMax};
+00064         this.longitude = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_aaeb7392ff8f3f26203e23f1dd57ae89f}{longitude};
+00065         this.latitude = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a6a75dfabd9812334d502756f91fa4aa9}{latitude};
+00066     \}
+00067 
+\Hypertarget{_ruche_8java_source_l00068}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a30f0d3e27135f5721ef7cd5117235896}{00068}     \textcolor{keyword}{public} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a30f0d3e27135f5721ef7cd5117235896}{Ruche}(\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche}{Ruche} ruche)
+00069     \{
+00070         this.nom = ruche.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ac72094a8a08cf8f485be1456863bc4bd}{nom};
+00071         this.deviceID = ruche.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a7126c2ff9e0b3b5365e042c5309ad775}{deviceID};
+00072         this.horodatage = ruche.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a93b3665d844cbba761ebf9a19a1d7d34}{horodatage};
+00073         this.connexion = ruche.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a8b1b18ca9364533f66214ed9daea875e}{connexion};
+00074         this.deconnexion = ruche.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a91168fb786c93a5233138f67b6a121ad}{deconnexion};
+00075         this.temperatureInterieurMin = ruche.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a143b0b293ab3aaa67a86550efeb56f07}{temperatureInterieurMin};
+00076         this.temperatureInterieurMax = ruche.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_af2d8d214dabc9af08329aa3173047245}{temperatureInterieurMax};
+00077         this.temperatureExterieurMin = ruche.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a6e88eae7cc58b7c7ca3846d789fe1c2b}{temperatureExterieurMin};
+00078         this.temperatureExterieurMax = ruche.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_afd45ecd796457b633615488195153114}{temperatureExterieurMax};
+00079         this.humiditeInterieurMin = ruche.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ab8234d1bae28a10622b331d3b773445d}{humiditeInterieurMin};
+00080         this.humiditeInterieurMax = ruche.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a1483266a1f1ba7d83e0f69bef8e26231}{humiditeInterieurMax};
+00081         this.humiditeExterieurMin = ruche.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ad58b8815412827add256f6c6e11d3043}{humiditeExterieurMin};
+00082         this.humiditeExterieurMax = ruche.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a76e636b4d5e0a18b187905e0d6d73a71}{humiditeExterieurMax};
+00083         this.poidsMin = ruche.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a3408f099f2fab8700353e6e266fe8221}{poidsMin};
+00084         this.poidsMax = ruche.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a5901bf432f6d2de0e5facb8952277cbc}{poidsMax};
+00085         this.longitude = ruche.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_aaeb7392ff8f3f26203e23f1dd57ae89f}{longitude};
+00086         this.latitude = ruche.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a6a75dfabd9812334d502756f91fa4aa9}{latitude};
+00087     \}
+00088 
+\Hypertarget{_ruche_8java_source_l00089}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a940047f0b4b8218e7faa7eafcc9665b2}{00089}     \textcolor{keyword}{public} \textcolor{keyword}{final} String \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a940047f0b4b8218e7faa7eafcc9665b2}{getNom}()
+00090     \{
+00091         \textcolor{keywordflow}{return} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ac72094a8a08cf8f485be1456863bc4bd}{nom};
+00092     \}
+00093 
+\Hypertarget{_ruche_8java_source_l00094}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_aae5d95d914d3d2c2e72c4bb9e9ab03f4}{00094}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_aae5d95d914d3d2c2e72c4bb9e9ab03f4}{setNom}(String nouveauNom)
+00095     \{
+00096         this.nom = nouveauNom;
+00097     \}
+00098 
+\Hypertarget{_ruche_8java_source_l00099}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a4960ba8542f507c850978b939b9aa9e5}{00099}     \textcolor{keyword}{public} \textcolor{keyword}{final} String \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a4960ba8542f507c850978b939b9aa9e5}{getDeviceID}()
+00100     \{
+00101         \textcolor{keywordflow}{return} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a7126c2ff9e0b3b5365e042c5309ad775}{deviceID};
+00102     \}
+00103 
+\Hypertarget{_ruche_8java_source_l00104}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a864e48de51e9b0e8e5c78ed7fe58a2d9}{00104}     \textcolor{keyword}{public} String \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a864e48de51e9b0e8e5c78ed7fe58a2d9}{getHorodatage}() \{ \textcolor{keywordflow}{return} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a93b3665d844cbba761ebf9a19a1d7d34}{horodatage}; \}
+00105 
+\Hypertarget{_ruche_8java_source_l00106}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_aff1e1caa39a1d012b1714df3902941f8}{00106}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_aff1e1caa39a1d012b1714df3902941f8}{setHorodatage}(String horodatage)
+00107     \{
+00108         this.horodatage = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a93b3665d844cbba761ebf9a19a1d7d34}{horodatage};
+00109     \}
+00110 
+\Hypertarget{_ruche_8java_source_l00111}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_abe485f3c2af62e324ffed32bb84c796f}{00111}     \textcolor{keyword}{public} String \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_abe485f3c2af62e324ffed32bb84c796f}{getConnexion}() \{ \textcolor{keywordflow}{return}  \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a8b1b18ca9364533f66214ed9daea875e}{connexion}; \}
+00112 
+\Hypertarget{_ruche_8java_source_l00113}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a6e1d75a4baf0c9255961bc64f7deca36}{00113}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a6e1d75a4baf0c9255961bc64f7deca36}{setConnexion}() \{ this.connexion = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a8b1b18ca9364533f66214ed9daea875e}{connexion}; \}
+00114 
+\Hypertarget{_ruche_8java_source_l00115}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a57fc0d510a3e9594e24b6586fcbea9ef}{00115}     \textcolor{keyword}{public} String \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a57fc0d510a3e9594e24b6586fcbea9ef}{getDeconnexion}() \{ \textcolor{keywordflow}{return} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a91168fb786c93a5233138f67b6a121ad}{deconnexion}; \}
+00116 
+\Hypertarget{_ruche_8java_source_l00117}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ae247736718ddb17f37e76e0615906091}{00117}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ae247736718ddb17f37e76e0615906091}{setDeconnexion}(String deconnexion) \{ this.deconnexion = 
+      \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a91168fb786c93a5233138f67b6a121ad}{deconnexion}; \}
+00118 
+\Hypertarget{_ruche_8java_source_l00119}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_afab94785f8af31f6ce436394ab41c9f3}{00119}     \textcolor{keyword}{public} \textcolor{keyword}{final} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche}{MesureRuche} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_afab94785f8af31f6ce436394ab41c9f3}{getMesureRuche}()
+00120     \{
+00121         \textcolor{keywordflow}{return} mesureRuche;
+00122     \}
+00123 
+\Hypertarget{_ruche_8java_source_l00124}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ad98ddabc86442d12acd1047aa746138b}{00124}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ad98ddabc86442d12acd1047aa746138b}{setMesureRuche}(\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche}{MesureRuche} mesureRuche)
+00125     \{
+00126         this.mesureRuche = mesureRuche;
+00127     \}
+00128 
+\Hypertarget{_ruche_8java_source_l00129}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a8627a17c2f48ceef15f665065da86255}{00129}     \textcolor{keyword}{public} \textcolor{keyword}{final} \textcolor{keywordtype}{double} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a8627a17c2f48ceef15f665065da86255}{getTemperatureInterieurMin}()
+00130     \{
+00131         \textcolor{keywordflow}{return} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a143b0b293ab3aaa67a86550efeb56f07}{temperatureInterieurMin};
+00132     \}
+00133 
+\Hypertarget{_ruche_8java_source_l00134}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_abd355743c57f79e2bf544bd20559b33f}{00134}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_abd355743c57f79e2bf544bd20559b33f}{setTemperatureInterieurMin}(\textcolor{keywordtype}{double} temperatureInterieurMin)
+00135     \{
+00136         this.temperatureInterieurMin = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a143b0b293ab3aaa67a86550efeb56f07}{temperatureInterieurMin};
+00137     \}
+00138 
+\Hypertarget{_ruche_8java_source_l00139}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a460323968438c2f0ba77b4d7e92c53bd}{00139}     \textcolor{keyword}{public} \textcolor{keyword}{final} \textcolor{keywordtype}{double} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a460323968438c2f0ba77b4d7e92c53bd}{getTemperatureInterieurMax}()
+00140     \{
+00141         \textcolor{keywordflow}{return} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_af2d8d214dabc9af08329aa3173047245}{temperatureInterieurMax};
+00142     \}
+00143 
+\Hypertarget{_ruche_8java_source_l00144}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ad0c1bb53162040918c8a9f2ed7c37dd0}{00144}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ad0c1bb53162040918c8a9f2ed7c37dd0}{setTemperatureInterieurMax}(\textcolor{keywordtype}{double} temperatureInterieurMax)
+00145     \{
+00146         this.temperatureInterieurMax = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_af2d8d214dabc9af08329aa3173047245}{temperatureInterieurMax};
+00147     \}
+00148 
+\Hypertarget{_ruche_8java_source_l00149}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ada637700d05524a98a143074c43acb7e}{00149}     \textcolor{keyword}{public} \textcolor{keyword}{final} \textcolor{keywordtype}{double} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ada637700d05524a98a143074c43acb7e}{getTemperatureExterieurMin}()
+00150     \{
+00151         \textcolor{keywordflow}{return} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a6e88eae7cc58b7c7ca3846d789fe1c2b}{temperatureExterieurMin};
+00152     \}
+00153 
+\Hypertarget{_ruche_8java_source_l00154}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ab93955d5269feca538027be06711413a}{00154}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ab93955d5269feca538027be06711413a}{setTemperatureExterieurMin}(\textcolor{keywordtype}{double} temperatureExterieurMin)
+00155     \{
+00156         this.temperatureExterieurMin = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a6e88eae7cc58b7c7ca3846d789fe1c2b}{temperatureExterieurMin};
+00157     \}
+00158 
+\Hypertarget{_ruche_8java_source_l00159}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a9fbd64d989fba4ae535329192a2396ff}{00159}     \textcolor{keyword}{public} \textcolor{keyword}{final} \textcolor{keywordtype}{double} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a9fbd64d989fba4ae535329192a2396ff}{getTemperatureExterieurMax}()
+00160     \{
+00161         \textcolor{keywordflow}{return} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_afd45ecd796457b633615488195153114}{temperatureExterieurMax};
+00162     \}
+00163 
+\Hypertarget{_ruche_8java_source_l00164}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a041d831cfbd058ba27d1b6901b046391}{00164}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a041d831cfbd058ba27d1b6901b046391}{setTemperatureExterieurMax}(\textcolor{keywordtype}{double} temperatureExterieurMax)
+00165     \{
+00166         this.temperatureExterieurMax = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_afd45ecd796457b633615488195153114}{temperatureExterieurMax};
+00167     \}
+00168 
+\Hypertarget{_ruche_8java_source_l00169}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a4885004ef2c40754789156d83e600b13}{00169}     \textcolor{keyword}{public} \textcolor{keyword}{final} \textcolor{keywordtype}{double} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a4885004ef2c40754789156d83e600b13}{getHumiditeInterieurMin}()
+00170     \{
+00171         \textcolor{keywordflow}{return} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ab8234d1bae28a10622b331d3b773445d}{humiditeInterieurMin};
+00172     \}
+00173 
+\Hypertarget{_ruche_8java_source_l00174}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ac06e9c83418f30546fea5d29f250b323}{00174}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ac06e9c83418f30546fea5d29f250b323}{setHumiditeInterieurMin}(\textcolor{keywordtype}{double} humiditeInterieurMin)
+00175     \{
+00176         this.humiditeInterieurMin = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ab8234d1bae28a10622b331d3b773445d}{humiditeInterieurMin};
+00177     \}
+00178 
+\Hypertarget{_ruche_8java_source_l00179}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a80f34bd8fdc880a8f94d9d61b6b70c78}{00179}     \textcolor{keyword}{public} \textcolor{keyword}{final} \textcolor{keywordtype}{double} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a80f34bd8fdc880a8f94d9d61b6b70c78}{getHumiditeInterieurMax}()
+00180     \{
+00181         \textcolor{keywordflow}{return} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a1483266a1f1ba7d83e0f69bef8e26231}{humiditeInterieurMax};
+00182     \}
+00183 
+\Hypertarget{_ruche_8java_source_l00184}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_aa17a8858db45900b9087e0f35bdf2e23}{00184}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_aa17a8858db45900b9087e0f35bdf2e23}{setHumiditeInterieurMax}(\textcolor{keywordtype}{double} humiditeInterieurMax)
+00185     \{
+00186         this.humiditeInterieurMax = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a1483266a1f1ba7d83e0f69bef8e26231}{humiditeInterieurMax};
+00187     \}
+00188 
+\Hypertarget{_ruche_8java_source_l00189}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a53c9d56abd4eed6f2f2d413e78ab0aba}{00189}     \textcolor{keyword}{public} \textcolor{keyword}{final} \textcolor{keywordtype}{double} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a53c9d56abd4eed6f2f2d413e78ab0aba}{getHumiditeExterieurMin}()
+00190     \{
+00191         \textcolor{keywordflow}{return} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ad58b8815412827add256f6c6e11d3043}{humiditeExterieurMin};
+00192     \}
+00193 
+\Hypertarget{_ruche_8java_source_l00194}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ab4e0d29d75a71336a51dad3d4f17b758}{00194}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ab4e0d29d75a71336a51dad3d4f17b758}{setHumiditeExterieurMin}(\textcolor{keywordtype}{double} humiditeExterieurMin)
+00195     \{
+00196         this.humiditeExterieurMin = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ad58b8815412827add256f6c6e11d3043}{humiditeExterieurMin};
+00197     \}
+00198 
+\Hypertarget{_ruche_8java_source_l00199}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ae489d121777412762533465498d1e60c}{00199}     \textcolor{keyword}{public} \textcolor{keyword}{final} \textcolor{keywordtype}{double} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_ae489d121777412762533465498d1e60c}{getHumiditeExterieurMax}()
+00200     \{
+00201         \textcolor{keywordflow}{return} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a76e636b4d5e0a18b187905e0d6d73a71}{humiditeExterieurMax};
+00202     \}
+00203 
+\Hypertarget{_ruche_8java_source_l00204}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a8ed5f5c7ede5ca2172306b91a0b6c9b7}{00204}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a8ed5f5c7ede5ca2172306b91a0b6c9b7}{setHumiditeExterieurMax}(\textcolor{keywordtype}{double} humiditeExterieurMax)
+00205     \{
+00206         this.humiditeExterieurMax = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a76e636b4d5e0a18b187905e0d6d73a71}{humiditeExterieurMax};
+00207     \}
+00208 
+\Hypertarget{_ruche_8java_source_l00209}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a71764fe95390c37cce877a60c6a630e3}{00209}     \textcolor{keyword}{public} \textcolor{keyword}{final} \textcolor{keywordtype}{double} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a71764fe95390c37cce877a60c6a630e3}{getPoidsMin}()
+00210     \{
+00211         \textcolor{keywordflow}{return} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a3408f099f2fab8700353e6e266fe8221}{poidsMin};
+00212     \}
+00213 
+\Hypertarget{_ruche_8java_source_l00214}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_aace243242d173adf82592342fecc1328}{00214}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_aace243242d173adf82592342fecc1328}{setPoidsMin}(\textcolor{keywordtype}{double} poidsMin)
+00215     \{
+00216         this.poidsMin = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a3408f099f2fab8700353e6e266fe8221}{poidsMin};
+00217     \}
+00218 
+\Hypertarget{_ruche_8java_source_l00219}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a713d2985a0a10983ad16d510decf46a3}{00219}     \textcolor{keyword}{public} \textcolor{keyword}{final} \textcolor{keywordtype}{double} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a713d2985a0a10983ad16d510decf46a3}{getPoidsMax}()
+00220     \{
+00221         \textcolor{keywordflow}{return} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a5901bf432f6d2de0e5facb8952277cbc}{poidsMax};
+00222     \}
+00223 
+\Hypertarget{_ruche_8java_source_l00224}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a76fb01b4b1fd90662907635efe949a9e}{00224}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a76fb01b4b1fd90662907635efe949a9e}{setPoidsMax}(\textcolor{keywordtype}{double} poidsMax)
+00225     \{
+00226         this.poidsMax = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a5901bf432f6d2de0e5facb8952277cbc}{poidsMax};
+00227     \}
+00228 
+\Hypertarget{_ruche_8java_source_l00229}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a8a460b9473646a05668426a57e9773cb}{00229}     \textcolor{keyword}{public} \textcolor{keyword}{final} \textcolor{keywordtype}{double} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a8a460b9473646a05668426a57e9773cb}{getLongitude}()
+00230     \{
+00231         \textcolor{keywordflow}{return} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_aaeb7392ff8f3f26203e23f1dd57ae89f}{longitude};
+00232     \}
+00233 
+\Hypertarget{_ruche_8java_source_l00234}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_aef8fc612e8ccdabd8234bff9b335925c}{00234}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_aef8fc612e8ccdabd8234bff9b335925c}{setLongitude}(\textcolor{keywordtype}{double} longitude)
+00235     \{
+00236         this.longitude = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_aaeb7392ff8f3f26203e23f1dd57ae89f}{longitude};
+00237     \}
+00238 
+\Hypertarget{_ruche_8java_source_l00239}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a1e291ebb5c69c90fa5b6b7fafe09820e}{00239}     \textcolor{keyword}{public} \textcolor{keyword}{final} \textcolor{keywordtype}{double} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a1e291ebb5c69c90fa5b6b7fafe09820e}{getLatitude}()
+00240     \{
+00241         \textcolor{keywordflow}{return} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a6a75dfabd9812334d502756f91fa4aa9}{latitude};
+00242     \}
+00243 
+\Hypertarget{_ruche_8java_source_l00244}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a38df72556466a10a52a4f3b799722532}{00244}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a38df72556466a10a52a4f3b799722532}{setLatitude}(\textcolor{keywordtype}{double} latitude)
+00245     \{
+00246         this.latitude = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_ruche_a6a75dfabd9812334d502756f91fa4aa9}{latitude};
+00247     \}
+00248 \}
+\end{DoxyCode}

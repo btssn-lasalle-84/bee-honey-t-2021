@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.bee_honeyt">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logo_small_icon_only_inverted"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/logo_small_icon_only_inverted"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.BeeHoneyt">
+        <activity android:name=".IHMGraphique"></activity>
+        <activity android:name=".IHMConnexion"></activity>
+        <activity android:name=".IHMMobile">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service android:name="org.eclipse.paho.android.service.MqttService" />
+    </application>
+
+</manifest>

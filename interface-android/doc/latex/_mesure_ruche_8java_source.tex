@@ -1,0 +1,113 @@
+\hypertarget{_mesure_ruche_8java_source}{}\subsection{Mesure\+Ruche.\+java}
+\label{_mesure_ruche_8java_source}\index{Mesure\+Ruche.\+java@{Mesure\+Ruche.\+java}}
+
+\begin{DoxyCode}
+00001 \textcolor{keyword}{package }com.example.bee\_honeyt;
+00002 
+\Hypertarget{_mesure_ruche_8java_source_l00015}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche}{00015} \textcolor{keyword}{public} \textcolor{keyword}{class }\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche}{MesureRuche}
+00016 \{
+\Hypertarget{_mesure_ruche_8java_source_l00017}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_afd0ecabb4e519d5bcfee33ac15b8b742}{00017}     \textcolor{keyword}{private} \textcolor{keywordtype}{double} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_afd0ecabb4e519d5bcfee33ac15b8b742}{temperatureInterieure} = 0.0;
+\Hypertarget{_mesure_ruche_8java_source_l00018}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_ac13ff0ed6c96cf755097510acf202521}{00018}     \textcolor{keyword}{private} \textcolor{keywordtype}{double} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_ac13ff0ed6c96cf755097510acf202521}{temperatureExterieure}= 0.0;
+\Hypertarget{_mesure_ruche_8java_source_l00019}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a3b5d2536649e0acaf1eebeba4409c9bb}{00019}     \textcolor{keyword}{private} \textcolor{keywordtype}{int} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a3b5d2536649e0acaf1eebeba4409c9bb}{humiditeInterieure} = 0;
+\Hypertarget{_mesure_ruche_8java_source_l00020}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_aa5521e97dfa98051bff9fd8d3ca3f34d}{00020}     \textcolor{keyword}{private} \textcolor{keywordtype}{int} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_aa5521e97dfa98051bff9fd8d3ca3f34d}{humiditeExterieure} = 0;
+\Hypertarget{_mesure_ruche_8java_source_l00021}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_ae78080a6d5745faa411e3cfbdbf8aeec}{00021}     \textcolor{keyword}{private} \textcolor{keywordtype}{int} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_ae78080a6d5745faa411e3cfbdbf8aeec}{pression} = 0;
+\Hypertarget{_mesure_ruche_8java_source_l00022}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a9aa6c575b7b69c4fb3825944e1f50722}{00022}     \textcolor{keyword}{private} \textcolor{keywordtype}{double} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a9aa6c575b7b69c4fb3825944e1f50722}{poids} = 0.0;
+\Hypertarget{_mesure_ruche_8java_source_l00023}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a5ac02bc1d6195faa400e5a3171eed3f4}{00023}     \textcolor{keyword}{private} \textcolor{keywordtype}{int} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a5ac02bc1d6195faa400e5a3171eed3f4}{charge} = 0;
+00024 
+\Hypertarget{_mesure_ruche_8java_source_l00025}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a3be117936bbcf591ae1a48b6c391f069}{00025}     \textcolor{keyword}{public} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a3be117936bbcf591ae1a48b6c391f069}{MesureRuche}()
+00026     \{
+00027 
+00028     \}
+00029 
+\Hypertarget{_mesure_ruche_8java_source_l00030}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_ab9e1fdc4825a5fda8172e6973ce7ec31}{00030}     \textcolor{keyword}{public} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_ab9e1fdc4825a5fda8172e6973ce7ec31}{MesureRuche}(\textcolor{keywordtype}{double} temperatureInterieure, \textcolor{keywordtype}{double} temperatureExterieure, \textcolor{keywordtype}{int} 
+      humiditeInterieure, \textcolor{keywordtype}{int} humiditeExterieure, \textcolor{keywordtype}{int} pression, \textcolor{keywordtype}{double} poids, \textcolor{keywordtype}{int} charge)
+00031     \{
+00032         this.temperatureInterieure = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_afd0ecabb4e519d5bcfee33ac15b8b742}{temperatureInterieure};
+00033         this.temperatureExterieure = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_ac13ff0ed6c96cf755097510acf202521}{temperatureExterieure};
+00034         this.humiditeInterieure = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a3b5d2536649e0acaf1eebeba4409c9bb}{humiditeInterieure};
+00035         this.humiditeExterieure = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_aa5521e97dfa98051bff9fd8d3ca3f34d}{humiditeExterieure};
+00036         this.pression = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_ae78080a6d5745faa411e3cfbdbf8aeec}{pression};
+00037         this.poids = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a9aa6c575b7b69c4fb3825944e1f50722}{poids};
+00038         this.charge = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a5ac02bc1d6195faa400e5a3171eed3f4}{charge};
+00039     \}
+00040 
+\Hypertarget{_mesure_ruche_8java_source_l00041}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a1585041919b80789002c833778231a41}{00041}     \textcolor{keyword}{public} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a1585041919b80789002c833778231a41}{MesureRuche}(\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche}{MesureRuche} mRuche)
+00042     \{
+00043         this.temperatureInterieure = mRuche.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_afd0ecabb4e519d5bcfee33ac15b8b742}{temperatureInterieure};
+00044         this.temperatureExterieure = mRuche.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_ac13ff0ed6c96cf755097510acf202521}{temperatureExterieure};
+00045         this.humiditeInterieure = mRuche.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a3b5d2536649e0acaf1eebeba4409c9bb}{humiditeInterieure};
+00046         this.humiditeExterieure = mRuche.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_aa5521e97dfa98051bff9fd8d3ca3f34d}{humiditeExterieure};
+00047         this.pression = mRuche.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_ae78080a6d5745faa411e3cfbdbf8aeec}{pression};
+00048         this.poids = mRuche.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a9aa6c575b7b69c4fb3825944e1f50722}{poids};
+00049         this.charge = mRuche.\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a5ac02bc1d6195faa400e5a3171eed3f4}{charge};
+00050     \}
+00051 
+\Hypertarget{_mesure_ruche_8java_source_l00052}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_ab552e0788fc7dba1e9ef83a0fce861f8}{00052}     \textcolor{keyword}{public} \textcolor{keyword}{final} \textcolor{keywordtype}{double} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_ab552e0788fc7dba1e9ef83a0fce861f8}{getTemperatureInterieur}()
+00053     \{
+00054         \textcolor{keywordflow}{return} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_afd0ecabb4e519d5bcfee33ac15b8b742}{temperatureInterieure};
+00055     \}
+00056 
+\Hypertarget{_mesure_ruche_8java_source_l00057}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a5364a38970b37df66bb8cb6f5b3d3741}{00057}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a5364a38970b37df66bb8cb6f5b3d3741}{setTemperatureInterieure}(\textcolor{keywordtype}{double} temperatureInterieure)
+00058     \{
+00059         this.temperatureInterieure = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_afd0ecabb4e519d5bcfee33ac15b8b742}{temperatureInterieure};
+00060     \}
+00061 
+\Hypertarget{_mesure_ruche_8java_source_l00062}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a8628b499066f185d78ae015ce50557a8}{00062}     \textcolor{keyword}{public} \textcolor{keyword}{final} \textcolor{keywordtype}{double} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a8628b499066f185d78ae015ce50557a8}{getTemperatureExterieur}()
+00063     \{
+00064         \textcolor{keywordflow}{return} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_ac13ff0ed6c96cf755097510acf202521}{temperatureExterieure};
+00065     \}
+00066 
+\Hypertarget{_mesure_ruche_8java_source_l00067}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a41591480ad8be13a1c7e2e7049dc7935}{00067}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a41591480ad8be13a1c7e2e7049dc7935}{setTemperatureExterieure}(\textcolor{keywordtype}{double} temperatureExterieure)
+00068     \{
+00069         this.temperatureExterieure = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_ac13ff0ed6c96cf755097510acf202521}{temperatureExterieure};
+00070     \}
+00071 
+\Hypertarget{_mesure_ruche_8java_source_l00072}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_af78ac1f237287bff4e1a36bebf8bbeef}{00072}     \textcolor{keyword}{public} \textcolor{keyword}{final} \textcolor{keywordtype}{int} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_af78ac1f237287bff4e1a36bebf8bbeef}{getHumiditeInterieur}()
+00073     \{
+00074         \textcolor{keywordflow}{return} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a3b5d2536649e0acaf1eebeba4409c9bb}{humiditeInterieure};
+00075     \}
+00076 
+\Hypertarget{_mesure_ruche_8java_source_l00077}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a8f2d166ffd8340562d9e5cbe5ea5f907}{00077}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a8f2d166ffd8340562d9e5cbe5ea5f907}{setHumiditeInterieure}(\textcolor{keywordtype}{int} humiditeInterieure)
+00078     \{
+00079         this.humiditeInterieure = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a3b5d2536649e0acaf1eebeba4409c9bb}{humiditeInterieure};
+00080     \}
+00081 
+\Hypertarget{_mesure_ruche_8java_source_l00082}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_ab16738883de0f1535d25bc36b828cc7a}{00082}     \textcolor{keyword}{public} \textcolor{keyword}{final} \textcolor{keywordtype}{int} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_ab16738883de0f1535d25bc36b828cc7a}{getHumiditeExterieur}()
+00083     \{
+00084         \textcolor{keywordflow}{return} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_aa5521e97dfa98051bff9fd8d3ca3f34d}{humiditeExterieure};
+00085     \}
+00086 
+\Hypertarget{_mesure_ruche_8java_source_l00087}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_aacb223667567aa9c8a73535f43cda985}{00087}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_aacb223667567aa9c8a73535f43cda985}{setHumiditeExterieure}(\textcolor{keywordtype}{int} humiditeExterieure)
+00088     \{
+00089         this.humiditeExterieure = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_aa5521e97dfa98051bff9fd8d3ca3f34d}{humiditeExterieure};
+00090     \}
+00091 
+\Hypertarget{_mesure_ruche_8java_source_l00092}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a68c21cc141b1103fb3746075657bd4fd}{00092}     \textcolor{keyword}{public} \textcolor{keyword}{final} \textcolor{keywordtype}{int} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a68c21cc141b1103fb3746075657bd4fd}{getPression}()
+00093     \{
+00094         \textcolor{keywordflow}{return} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_ae78080a6d5745faa411e3cfbdbf8aeec}{pression};
+00095     \}
+00096 
+\Hypertarget{_mesure_ruche_8java_source_l00097}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a87cff86af4a7e977aac1caeaf6a37bc8}{00097}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a87cff86af4a7e977aac1caeaf6a37bc8}{setPression}(\textcolor{keywordtype}{int} pression)
+00098     \{
+00099         this.pression = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_ae78080a6d5745faa411e3cfbdbf8aeec}{pression};
+00100     \}
+00101 
+\Hypertarget{_mesure_ruche_8java_source_l00102}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_aff130b4038e223f3ec83769fc354a007}{00102}     \textcolor{keyword}{public} \textcolor{keyword}{final} \textcolor{keywordtype}{double} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_aff130b4038e223f3ec83769fc354a007}{getPoids}()
+00103     \{
+00104         \textcolor{keywordflow}{return} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a9aa6c575b7b69c4fb3825944e1f50722}{poids};
+00105     \}
+00106 
+\Hypertarget{_mesure_ruche_8java_source_l00107}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_aecea2cf7cc504caa34bef93a0e1f3826}{00107}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_aecea2cf7cc504caa34bef93a0e1f3826}{setPoids}(\textcolor{keywordtype}{double} poids)
+00108     \{
+00109         this.poids = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a9aa6c575b7b69c4fb3825944e1f50722}{poids};
+00110     \}
+00111 
+\Hypertarget{_mesure_ruche_8java_source_l00112}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a5fb489924272149140eb7a4c81cacaec}{00112}     \textcolor{keyword}{public} \textcolor{keyword}{final} \textcolor{keywordtype}{int} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a5fb489924272149140eb7a4c81cacaec}{getCharge}() \{ \textcolor{keywordflow}{return} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a5ac02bc1d6195faa400e5a3171eed3f4}{charge}; \}
+00113 
+\Hypertarget{_mesure_ruche_8java_source_l00114}\hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_aaa185bf82c41c889d3e60804da25bd30}{00114}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_aaa185bf82c41c889d3e60804da25bd30}{setCharge}(\textcolor{keywordtype}{int} charge)
+00115     \{
+00116         this.charge = \hyperlink{classcom_1_1example_1_1bee__honeyt_1_1_mesure_ruche_a5ac02bc1d6195faa400e5a3171eed3f4}{charge};
+00117     \}
+00118 
+00119 \}
+\end{DoxyCode}
